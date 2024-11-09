@@ -1,9 +1,16 @@
-import React from 'react'
+import { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import './App.css'
+import ThemeToggle from './ThemeToggle'
 
-export default function App() {
+function App() {
+
   return (
-    <div>
-      asdfad
-    </div>
+    <>
+      <Button>click</Button>
+      <ThemeToggle/>
+    </>
   )
 }
+
+export default App
