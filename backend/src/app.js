@@ -18,8 +18,8 @@ app.use(express.static("public")) // for public static asset
 app.use(cookieParser())
 
 // routes import
-// import userRouter from './routes/user.routes.js';
+import roleRouter from './routes/role.router.js';
 
 // routes declaration
-// app.use("/api/v1/users",userRouter)
+app.use("/api/v1/role",roleRouter)
 export {app}

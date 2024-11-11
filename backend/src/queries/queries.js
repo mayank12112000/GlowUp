@@ -1,3 +1,2 @@
-const SELECT_ROLES = 'SELECT * FROM ROLE where role_seq = ?'
-
+const SELECT_ROLES = "SELECT * FROM ROLE"
 export {SELECT_ROLES}
