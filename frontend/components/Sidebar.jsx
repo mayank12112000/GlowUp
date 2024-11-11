@@ -7,94 +7,70 @@ export default function Sidebar() {
     }
 
   return (
-    <div class="wrapper">
+    <div className="wrapper">
     <aside id="sidebar">
-        <div class="d-flex">
-            <button onClick={handleToggle} class="toggle-btn" type="button">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+        <div className="d-flex">
+            <button onClick={handleToggle} className="toggle-btn" type="button">
+            <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
-            <div class="sidebar-logo">
-                <a href="#">CodzSword</a>
+            <div className="sidebar-logo">
+                {/* <a href="/">CodzSword</a> */}
             </div>
         </div>
-        <ul class="sidebar-nav">
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+        <ul className="sidebar-nav d-flex flex-column justify-content-evenly">
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-user" aria-hidden="true"></i>
                 <span>Profile</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                    <i class="lni lni-agenda"></i>
-                    <span>Task</span>
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-heart" aria-hidden="true"></i>
+                <span>Wishlist</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                    data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                    <i class="lni lni-protection"></i>
-                    <span>Auth</span>
-                </a>
-                <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Login</a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Register</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                    data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                    <i class="lni lni-layout"></i>
-                    <span>Multi Level</span>
-                </a>
-                <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                            Two Links
-                        </a>
-                        <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Link 1</a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="#" class="sidebar-link">Link 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                    <i class="lni lni-popup"></i>
-                    <span>Notification</span>
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span>Cart</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
-                    <i class="lni lni-cog"></i>
+            
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+                <span>Orders</span>
+                </a>
+            </li>
+            
+          <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-calendar" aria-hidden="true"></i>
+                    <span>Calender</span>
+                </a>
+            </li>
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-bell" aria-hidden="true"></i>
+                <span>Notification</span>
+                </a>
+            </li>
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+                <i className="fa fa-cog" aria-hidden="true"></i>
                     <span>Setting</span>
                 </a>
             </li>
+            <li className="sidebar-item">
+                <a href="/" className="sidebar-link">
+            <i className="fa fa-sign-out" aria-hidden="true"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
         </ul>
-        <div class="sidebar-footer">
-            <a href="#" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
-            </a>
-        </div>
+        
     </aside>
-    <div class="main p-3">
-        <div class="text-center">
-            <h1>
-                Sidebar Bootstrap 5
-            </h1>
-        </div>
-    </div>
 </div>
   )
 }
