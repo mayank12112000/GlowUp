@@ -1,0 +1,3 @@
+const SELECT_ROLES = 'SELECT * FROM ROLE'
+
+export {SELECT_ROLES}

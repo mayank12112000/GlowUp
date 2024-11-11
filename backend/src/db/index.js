@@ -1,13 +1,26 @@
-import mongoose, { mongo } from "mongoose";
-import { DB_NAME } from "../constants.js";
+import mysql from 'mysql2/promise';
 
-const connectDB = async ()=>{
-    try {
-        const connectionInstance = await mongoose.connect(`${process.env.MOGODB_URI}/${DB_NAME}`)
-        console.log("\n mongodb connected !! db host:",connectionInstance.connection.host)
-    } catch (error) {
-        console.warn("cannot connect to mongo db, error:",error);
-        process.exit(1)
+let connection; // Store the connection here
+
+// Function to initialize and return the connection
+const connectDB = async () => {
+    if (!connection) {
+        try {
+            connection = await mysql.createConnection({
+                host: process.env.DB_HOST,
+                user: process.env.DB_USER,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+                port: process.env.DB_PORT,
+            });
+            console.log("MySQL connected successfully!");
+        } catch (error) {
+            console.error("Cannot connect to MySQL DB:", error);
+            process.exit(1);
+        }
     }
-}
-export default connectDB;
+    return connection;
+};
+
+// Export both connectDB and the connection instance
+export { connectDB, connection };
