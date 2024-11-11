@@ -41,3 +41,20 @@
   color: #888;
 }
  */
+.app-body{
+  display: flex;
+}
+@media only screen and (max-width: 768px) {
+ .app-body{
+  display: flex;
+  flex-direction: column-reverse;
+ }
+ 
+}
+.rest{
+  flex:1;
+  height: 100vh;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+  overflow-y: scroll;
+  scrollbar-width: none;
+}

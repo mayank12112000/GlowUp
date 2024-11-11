@@ -1,20 +1,18 @@
 import Sidebar from '../components/Sidebar';
 import './App.css'
-import { useState } from 'react';
 
 function App() {
 
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  // Toggle function for sidebar
-  const onSetSidebarOpen = (open) => {
-    setSidebarOpen(open);
-  };
 
   return (
-    <>
+    <div className='app-body'>
     <Sidebar/>
-    </>
+    <div className="rest container">
+      rest page Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore, odio. Accusantium possimus numquam dolores assumenda, cum voluptate impedit magni? Quam quia velit excepturi, minus consequatur perferendis facilis sequi asperiores repudiandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit necessitatibus non reprehenderit, nisi fugiat ex natus! Fuga aperiam vel perferendis ex corporis, consequatur et officia eveniet labore. Non deleniti et illum enim quos itaque repellat quae voluptatibus alias unde maiores eveniet dolores, ducimus praesentium corrupti nobis vitae quisquam iure dicta minima, deserunt esse doloribus! Laudantium explicabo corporis ipsa autem, minima repellendus mollitia, quam vero error cupiditate maxime nobis dicta nostrum voluptates ex ea quaerat repudiandae? Iure, placeat? Quisquam, adipisci. Dolorum, voluptate qui soluta laudantium quae aspernatur nemo pariatur iusto, ab cumque accusamus quia officiis dolores modi inventore voluptatem cupiditate laborum distinctio veniam tempora explicabo, iure numquam molestias! Eveniet odit, nobis labore eaque error ratione cumque? Facilis numquam eligendi perspiciatis totam consequuntur, aliquam soluta? Qui odit doloribus in temporibus, obcaecati recusandae, animi et optio dolor delectus suscipit. Voluptas quos deleniti eos rem veritatis ipsum tempora provident obcaecati quidem, doloremque ratione. Nemo, quis! Illo ipsam illum velit dolorem consequuntur? Temporibus quam expedita quibusdam saepe quisquam placeat vero reiciendis blanditiis provident magni corporis deleniti ex, explicabo recusandae maxime at quis exercitationem ratione omnis eaque? Temporibus, beatae officiis. Illum architecto maxime voluptas porro aperiam harum impedit. Error pariatur earum maxime eveniet! Laborum corporis adipisci tempora expedita non distinctio corrupti illo quia officia blanditiis facere recusandae consequatur quod perspiciatis vitae commodi, at quis nemo magni inventore possimus laboriosam doloribus, necessitatibus ea. Quaerat soluta sequi, recusandae velit tempora ipsa modi fuga dolorem minus laboriosam repellendus. Sed vitae quidem rem, iusto perferendis dolores recusandae culpa illo itaque accusantium voluptates ipsa reiciendis alias expedita repellat autem atque deleniti animi perspiciatis assumenda eos deserunt placeat obcaecati harum. Non facilis consequuntur commodi et sequi dolore fuga? Explicabo quia nobis unde? Sed, nemo consequatur. Rerum optio neque voluptatem rem, suscipit tempora veniam eum sunt est culpa. Blanditiis reprehenderit quasi, culpa dolor quaerat incidunt pariatur possimus repellendus laudantium dolore enim atque voluptatum amet alias assumenda, accusantium eaque consequatur rerum nulla qui doloribus nam. Consequuntur incidunt quibusdam nulla suscipit similique fugiat dolorem officiis debitis temporibus quo maiores odio maxime asperiores nobis ad voluptatibus earum, laborum quas numquam in voluptatem illo doloribus. At eum error voluptas quas mollitia ad ducimus rem illum dolorum magnam nemo eius voluptatum ab rerum laudantium qui aspernatur, harum sint officia. Earum autem iusto, illum at, maxime facere assumenda totam atque distinctio blanditiis ullam! Saepe nemo amet quasi voluptatem unde, porro facilis dolorem cupiditate laudantium? Error placeat a voluptatibus fugit vitae eius adipisci optio at perspiciatis. Eos maxime nostrum facere doloremque quod sed tempore. Dolorem ipsam quasi ea, quo placeat quidem sint dolore nisi blanditiis? Aliquid tempora cumque voluptates quis magnam incidunt nisi. Odit harum placeat natus corrupti nostrum, voluptatem magnam a obcaecati animi modi dolorum facere, explicabo consectetur officia adipisci cumque et rem, ea debitis dolor molestiae eaque sequi sed. Laboriosam accusantium aliquid corrupti sint, quidem quis nemo rerum aperiam dolore fuga recusandae esse consequuntur magnam earum, illo, ad dignissimos. Vitae harum aliquam dolor quam. Recusandae vel doloribus ullam ad omnis consequatur beatae, dignissimos est rerum laudantium, maxime distinctio!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, autem explicabo recusandae, voluptas ipsa expedita alias deleniti accusantium quos fuga, sequi debitis! Quasi tempore sit obcaecati quae explicabo inventore magnam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto molestias necessitatibus nobis! Maiores, magnam soluta quisquam, expedita voluptas itaque dolore modi temporibus corporis laboriosam, veritatis rem. Libero doloribus voluptatem iste. Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolore doloribus autem expedita, accusamus laudantium rem ipsa deserunt eos facilis molestias nobis quasi id, illo unde dolorem ratione! Labore, vel.
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor explicabo iusto at, quasi hic aperiam quibusdam commodi necessitatibus deleniti ut voluptatibus assumenda dolore totam omnis provident natus eius magni rerum.
+      </div>
+    </div>
   );
 };
 

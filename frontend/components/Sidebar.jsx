@@ -1,43 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./sidebar.css"
 export default function Sidebar() {
-
+    const [open,setOpen] = useState(false)
     const handleToggle = ()=>{
         document.querySelector("#sidebar").classList.toggle("expand");
+        setOpen(!open)
     }
 
   return (
-    <div className="wrapper">
     <aside id="sidebar">
-        <div className="d-flex">
+        <div className="d-flex hamburger">
             <button onClick={handleToggle} className="toggle-btn" type="button">
-            <i className="fa fa-bars" aria-hidden="true"></i>
+            {open==false ? <i className="fa fa-bars" aria-hidden="true"></i>:
+            <i className="fa fa-times" aria-hidden="true"></i>}
             </button>
             <div className="sidebar-logo">
-                {/* <a href="/">CodzSword</a> */}
             </div>
         </div>
-        <ul className="sidebar-nav d-flex flex-column justify-content-evenly">
+        <ul className="sidebar-nav p-0 d-flex flex-column justify-content-evenly">
             <li className="sidebar-item">
                 <a href="/" className="sidebar-link">
                 <i className="fa fa-user" aria-hidden="true"></i>
                 <span>Profile</span>
                 </a>
             </li>
-            <li className="sidebar-item">
+            <li className="sidebar-item sidebar-wishlist">
                 <a href="/" className="sidebar-link">
                 <i className="fa fa-heart" aria-hidden="true"></i>
                 <span>Wishlist</span>
                 </a>
             </li>
-            <li className="sidebar-item">
+            <li className="sidebar-item sidebar-cart">
                 <a href="/" className="sidebar-link">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>Cart</span>
                 </a>
             </li>
             
-            <li className="sidebar-item">
+            <li className="sidebar-item ">
                 <a href="/" className="sidebar-link">
                 <i className="fa fa-shopping-bag" aria-hidden="true"></i>
                 <span>Orders</span>
@@ -56,7 +56,7 @@ export default function Sidebar() {
                 <span>Notification</span>
                 </a>
             </li>
-            <li className="sidebar-item">
+            <li className="sidebar-item sidebar-setting">
                 <a href="/" className="sidebar-link">
                 <i className="fa fa-cog" aria-hidden="true"></i>
                     <span>Setting</span>
@@ -71,6 +71,5 @@ export default function Sidebar() {
         </ul>
         
     </aside>
-</div>
   )
 }
