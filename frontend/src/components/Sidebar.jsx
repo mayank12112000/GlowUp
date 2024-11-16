@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import "./sidebar.css"
 export default function Sidebar() {
     const [open,setOpen] = useState(false)
@@ -19,54 +20,54 @@ export default function Sidebar() {
         </div>
         <ul className="sidebar-nav p-0 d-flex flex-column justify-content-evenly">
             <li className="sidebar-item">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/" className="sidebar-link">
                 <i className="fa fa-user" aria-hidden="true"></i>
                 <span>Profile</span>
-                </a>
+                </NavLink>
             </li>
             <li className="sidebar-item sidebar-wishlist">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/wishlist" className="sidebar-link">
                 <i className="fa fa-heart" aria-hidden="true"></i>
                 <span>Wishlist</span>
-                </a>
+                </NavLink>
             </li>
             <li className="sidebar-item sidebar-cart">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/cart" className="sidebar-link">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>Cart</span>
-                </a>
+                </NavLink>
             </li>
             
             <li className="sidebar-item ">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/orders" className="sidebar-link">
                 <i className="fa fa-shopping-bag" aria-hidden="true"></i>
                 <span>Orders</span>
-                </a>
+                </NavLink>
             </li>
             
           <li className="sidebar-item">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/calender" className="sidebar-link">
                 <i className="fa fa-calendar" aria-hidden="true"></i>
                     <span>Calender</span>
-                </a>
+                </NavLink>
             </li>
             <li className="sidebar-item">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/notification" className="sidebar-link">
                 <i className="fa fa-bell" aria-hidden="true"></i>
                 <span>Notification</span>
-                </a>
+                </NavLink>
             </li>
             <li className="sidebar-item sidebar-setting">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/settings" className="sidebar-link">
                 <i className="fa fa-cog" aria-hidden="true"></i>
-                    <span>Setting</span>
-                </a>
+                    <span>Settings</span>
+                </NavLink>
             </li>
             <li className="sidebar-item">
-                <a href="/" className="sidebar-link">
+                <NavLink to="/" className="sidebar-link">
             <i className="fa fa-sign-out" aria-hidden="true"></i>
                     <span>Logout</span>
-                </a>
+                </NavLink>
             </li>
         </ul>
         
