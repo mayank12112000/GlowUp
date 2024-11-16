@@ -11,10 +11,13 @@ import Calender from './pages/Calender';
 import Orders from './pages/Orders';
 import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage';
+import { ThemeContext } from './context/ThemeProvider';
+import { useContext } from 'react';
 function App() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <div className='app-body'>
+    <div className={`app-body  ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"}`}>
       <Sidebar />
       <div className="rest">
         <Routes>
