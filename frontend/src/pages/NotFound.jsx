@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function NotFound() {
   return (
-    <>
-    not NotFound
-    </>
+    <div  className='shadow px-4'>s
+ NotFound
+    </div>
   )
 }
