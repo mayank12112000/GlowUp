@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./sidebar.css"
+import { ThemeContext } from '../context/ThemeProvider';
 export default function Sidebar() {
+    const { theme, toggleTheme } = useContext(ThemeContext);
+
     const [open,setOpen] = useState(false)
     const handleToggle = ()=>{
         document.querySelector("#sidebar").classList.toggle("expand");
@@ -9,11 +12,11 @@ export default function Sidebar() {
     }
 
   return (
-    <aside id="sidebar">
+    <aside id="sidebar" className={`shadow ${theme === "dark" ? "sidebar-dark" : "sidebar-light"}`}>
         <div className="d-flex hamburger">
             <button onClick={handleToggle} className="toggle-btn" type="button">
-            {open==false ? <i className="fa fa-bars" aria-hidden="true"></i>:
-            <i className="fa fa-times" aria-hidden="true"></i>}
+            {open==false ? <i className={`fa fa-bars fs-4 ${theme === "dark" ? "text-white":"text-black"}`} aria-hidden="true"></i>:
+            <i className={`fa fa-times ${theme === "dark" ? "text-white":"text-black"}`} aria-hidden="true"></i>}
             </button>
             <div className="sidebar-logo">
             </div>
@@ -21,54 +24,56 @@ export default function Sidebar() {
         <ul className="sidebar-nav p-0 d-flex flex-column justify-content-evenly">
             <li className="sidebar-item">
                 <NavLink to="/" className="sidebar-link">
-                <i className="fa fa-user" aria-hidden="true"></i>
-                <span>Profile</span>
+                <i class="fa fa-home fs-4" aria-hidden="true"></i>
+                <span>Home</span>
                 </NavLink>
             </li>
+            
             <li className="sidebar-item sidebar-wishlist">
                 <NavLink to="/wishlist" className="sidebar-link">
-                <i className="fa fa-heart" aria-hidden="true"></i>
+                <i className="fa fa-heart fs-4" aria-hidden="true"></i>
                 <span>Wishlist</span>
                 </NavLink>
             </li>
             <li className="sidebar-item sidebar-cart">
                 <NavLink to="/cart" className="sidebar-link">
-                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                <i className="fa fa-shopping-cart fs-4" aria-hidden="true"></i>
                 <span>Cart</span>
                 </NavLink>
             </li>
+          <li className="sidebar-item">
+                <NavLink to="/calender" className="sidebar-link">
+                <i className="fa fa-calendar fs-4" aria-hidden="true"></i>
+                    <span>Calender</span>
+                </NavLink>
+            </li>
             
-            <li className="sidebar-item ">
+            <li className="sidebar-item sidebar-orders">
                 <NavLink to="/orders" className="sidebar-link">
-                <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+                <i className="fa fa-shopping-bag fs-4" aria-hidden="true"></i>
                 <span>Orders</span>
                 </NavLink>
             </li>
             
-          <li className="sidebar-item">
-                <NavLink to="/calender" className="sidebar-link">
-                <i className="fa fa-calendar" aria-hidden="true"></i>
-                    <span>Calender</span>
+            <li className="sidebar-item">
+                <NavLink to="/notification" className="sidebar-link">
+                <i className="fa fa-bell fs-4" aria-hidden="true"></i>
+                <span>Notification</span>
                 </NavLink>
             </li>
             <li className="sidebar-item">
-                <NavLink to="/notification" className="sidebar-link">
-                <i className="fa fa-bell" aria-hidden="true"></i>
-                <span>Notification</span>
+                <NavLink to="/profile" className="sidebar-link">
+                <i className="fa fa-user fs-4" aria-hidden="true"></i>
+                <span>Profile</span>
                 </NavLink>
             </li>
             <li className="sidebar-item sidebar-setting">
                 <NavLink to="/settings" className="sidebar-link">
-                <i className="fa fa-cog" aria-hidden="true"></i>
+                <i className="fa fa-cog fs-4" aria-hidden="true"></i>
                     <span>Settings</span>
                 </NavLink>
             </li>
-            <li className="sidebar-item">
-                <NavLink to="/" className="sidebar-link">
-            <i className="fa fa-sign-out" aria-hidden="true"></i>
-                    <span>Logout</span>
-                </NavLink>
-            </li>
+            
         </ul>
         
     </aside>

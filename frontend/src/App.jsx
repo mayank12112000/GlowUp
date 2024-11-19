@@ -13,13 +13,18 @@ import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage';
 import { ThemeContext } from './context/ThemeProvider';
 import { useContext } from 'react';
+import Navbar from './components/Navbar';
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
+    <>
+      <Navbar/>
     <div className={`app-body  ${theme === "dark" ? "bg-dark text-white" : "bg-light text-dark"}`}>
       <Sidebar />
       <div className="rest">
+      <div className="row shadow">
+      <div className='container mx-4 my-4'>
         <Routes>
           <Route path='/settings' element={<Settings/>}/>  
           <Route path='/notification' element={<Notification/>}/>  
@@ -33,6 +38,9 @@ function App() {
         </Routes>  
       </div>
     </div>
+    </div>
+    </div>
+    </>
   );
 }
 

@@ -42,6 +42,12 @@
 }
  */
 /* Base styles */
+.text-black{
+  color: black !important;
+}
+.text-white{
+  color: white !important;
+}
 body {
   font-size: 14px;
   line-height: 1.5;
@@ -150,4 +156,7 @@ p {
   /* Prevents horizontal scroll */
   overflow-y: scroll;
   scrollbar-width: none;
+}
+.row .container{
+  padding-right: 4rem;
 }

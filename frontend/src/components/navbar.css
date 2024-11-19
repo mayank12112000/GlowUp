@@ -1,0 +1,16 @@
+.navbar-dark{
+        background-color: #0e2238 !important;
+}
+.navbar-logo{
+        width: 1.95rem;
+        border-radius: 50%;
+        margin-left: 0.65rem;
+}
+.navbar .logo{
+        height: 2rem;
+        display: flex;
+        align-items: center;
+}
+.navbar{
+        height: 3.5rem;
+}

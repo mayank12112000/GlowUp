@@ -26,15 +26,11 @@ body {
 
 
 #sidebar {
-    /* position: fixed; */
     width: 70px;
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
-    background-color: #0e2238;
-    /* height: 100vh; */
 }
-
 #sidebar.expand {
     width: 160px;
     min-width: 160px;
@@ -75,7 +71,7 @@ body {
 
 a.sidebar-link {
     padding: .625rem 1.625rem;
-    color: #FFF;
+    /* color: #FFF; */
     display: block;
     font-size: 0.9rem;
     white-space: nowrap;
@@ -140,12 +136,13 @@ a.sidebar-link:hover {
         flex-direction: row; /* Make items align horizontally */
         z-index: 1000;
         transition: none; /* Remove transition for better UX on small screens */
+        padding: 0.75rem;
     }
 
     .sidebar-nav {
         padding: 0;
         display: flex;
-        flex-direction: row-reverse !important;
+        flex-direction: row !important;
         justify-content: space-around; /* Distribute items evenly */
         width: 100%; /* Make nav full width */
     }
@@ -169,7 +166,7 @@ a.sidebar-link:hover {
     .sidebar-nav{
         margin: 0.25rem 0 ;
     }
-    .sidebar-wishlist, .sidebar-order,.sidebar-cart, .sidebar-setting{
+    .sidebar-wishlist,.sidebar-orders, .sidebar-setting{
         display: none !important;
     }
     
@@ -182,4 +179,17 @@ a.sidebar-link:hover {
     .sidebar-link{
         padding: 0rem 0rem !important;
     }
+}
+
+.sidebar-dark a.sidebar-link{
+    color: #FFF;
+}
+
+.sidebar-light a.sidebar-link {
+    color: black;
+    
+}
+.sidebar-dark{
+    background-color: #0e2238;
+    color: white;
 }
