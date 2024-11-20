@@ -136,8 +136,8 @@ a.sidebar-link:hover {
         flex-direction: row; /* Make items align horizontally */
         z-index: 1000;
         transition: none; /* Remove transition for better UX on small screens */
-        padding: 0.75rem;
-    }
+        padding-bottom: 0px;
+}
 
     .sidebar-nav {
         padding: 0;
@@ -187,6 +187,7 @@ a.sidebar-link:hover {
 
 .sidebar-light a.sidebar-link {
     color: black;
+    background-color: white;
     
 }
 .sidebar-dark{

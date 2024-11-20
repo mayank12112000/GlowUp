@@ -24,7 +24,7 @@ export default function Sidebar() {
         <ul className="sidebar-nav p-0 d-flex flex-column justify-content-evenly">
             <li className="sidebar-item">
                 <NavLink to="/" className="sidebar-link">
-                <i class="fa fa-home fs-4" aria-hidden="true"></i>
+                <i className="fa fa-home fs-4" aria-hidden="true"></i>
                 <span>Home</span>
                 </NavLink>
             </li>

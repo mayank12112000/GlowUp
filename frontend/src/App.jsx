@@ -24,7 +24,7 @@ function App() {
       <Sidebar />
       <div className="rest">
       <div className="row shadow">
-      <div className='container mx-4 my-4'>
+      <div className='container mx-4 mb-7 mt-4'>
         <Routes>
           <Route path='/settings' element={<Settings/>}/>  
           <Route path='/notification' element={<Notification/>}/>  
