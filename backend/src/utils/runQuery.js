@@ -1,4 +1,5 @@
 import { connectDB, connection } from "../db/index.js";
+import { ApiError } from "./ApiError.js";
 
 const runQuery = async (query, params = []) => {
   if (!connection) {
@@ -9,7 +10,7 @@ const runQuery = async (query, params = []) => {
     return { results, fields };
   } catch (error) {
     console.error("Error running query:", error);
-    throw error;
+    throw new ApiError(500,"database query failed:",error.message);
   }
 };
 export { runQuery };

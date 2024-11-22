@@ -3,7 +3,8 @@ export const asyncHandler = (asyncFunction)=>{
     try {
         await asyncFunction(req,res,next)
     } catch (error) {
-        res.status(error.code || 500).json({
+        res.status(error.statusCode || 500).json({
+            statusCode:error.statusCode || 500,
             success:false,
             message:error.message
         })

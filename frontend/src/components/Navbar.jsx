@@ -26,7 +26,7 @@ export default function Navbar() {
         }
         </div>
         <div className="dropdown mx-3" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
-            <i class="fa fa-user fs-4" onClick={toggleProfileOptions} aria-hidden="true"></i>
+            <i className="fa fa-user fs-4" onClick={toggleProfileOptions} aria-hidden="true"></i>
             <ul  className={`dropdown-menu ${showProfileOptions ? "show" : ""}`} aria-labelledby="profileDropdown">
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/orders">Orders</Link></li>
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/cart">Cart</Link></li>
