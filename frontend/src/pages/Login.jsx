@@ -55,11 +55,9 @@ export default function Login() {
             <div className="col-sm-6">
             <Input name="loginParam" onChange={handleOnChange} value={formData.loginParam} type="text" label="User Name/email/mobile" required={true}/>
             </div>
-            
             <div className="col-sm-6">
             <Input name="password" onChange={handleOnChange} value={formData.password} type="password" label="Password" required={true}/>
             </div>
-            
           </div>
           <Button disabled={(loading || loggedIn) ? true : false} child={loading && <Spinner/>} type="submit" text="Login" variant="secondary" />
         <p><small>Don't have a acount? <span><Link to="/signup">Sign Up</Link></span></small></p>

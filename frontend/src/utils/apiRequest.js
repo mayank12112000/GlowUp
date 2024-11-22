@@ -1,11 +1,12 @@
 export const apiRequest = async (url, method = "GET", requestBody = null, token = "", headers = {}) => {
     const defaultHeaders = {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': token ? `Bearer ${token}` : "" 
     };
     const options = {
         method: method,
         headers: { ...defaultHeaders, ...headers },
+        credentials: "include", 
     };
     if (requestBody && method !== "GET") {
         options.body = JSON.stringify(requestBody);

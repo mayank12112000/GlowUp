@@ -75,7 +75,13 @@ const loginUser=asyncHandler(async(req,res,next)=>{
             // "INSERT INTO USER_TOKENS(USER_SEQ,ACCESS_TOKEN,REFRESH_TOKEN,CREATED_AT,UPDATED_AT) VALUES(?,?,?,NOW(),NOW())"
             await runQuery(INSERT_TOKENS,[user.user_seq,accessToken,refreshToken])
         }
+        const options= {
+            httpOnly:true,
+            secure:true,
+        }
         return res.status(200)
+        .cookie("accessToken",accessToken,options)
+        .cookie("refreshToken",refreshToken,options)
         .json(new ApiResponse(200,{accessToken,refreshToken},"Login successful"))
     
 })

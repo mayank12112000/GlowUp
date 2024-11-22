@@ -16,6 +16,7 @@ import { useContext } from 'react';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Role from './pages/Role';
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -38,7 +39,7 @@ function App() {
           <Route path='/orders' element={<Orders/>}/>  
           <Route path='/signup' element={<Signup/>}/>  
           <Route path='/login' element={<Login/>}/>  
-          <Route path='*' element={<NotFound/>}/>  
+          <Route path='*' element={<Role/>}/>  
         </Routes>  
       </div>
     </div>

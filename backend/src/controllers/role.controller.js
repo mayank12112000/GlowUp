@@ -20,4 +20,4 @@ const removeRole = asyncHandler(async(req,res,next)=>{
     // to do after making verify jwt middleware
 })
 
-export {getAllRoles}
+export {getAllRoles,addRole}
