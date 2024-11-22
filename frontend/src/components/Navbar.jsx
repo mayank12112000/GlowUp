@@ -1,10 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../context/ThemeProvider';
 import "./navbar.css"
 import { Link } from 'react-router-dom';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const [showProfileOptions, setShowProfileOptions] = useState(false);
 
+    // Toggle profile options visibility
+    const toggleProfileOptions = () => {
+      setShowProfileOptions(!showProfileOptions);
+    };
   return (
     <nav className={`shadow navbar navbar-expand-lg bg-body-tertiary ${theme==="dark"?"navbar-dark":""}`}>
       <div className="container-fluid">
@@ -12,11 +17,22 @@ export default function Navbar() {
         <img className='navbar-logo' src="media/logo.png" alt="" />
         <Link className="navbar-brand mx-2" to="/">Glow Up</Link>
         </div>
+        <div className="options d-flex align-items-center">
+        
         <div className="theme-toggle">
           {theme == "dark" ?
           <button onClick={toggleTheme} className='btn'><i className="fs-5 text-white fa fa-sun-o" aria-hidden="true"></i></button>:
           <button onClick={toggleTheme} className='btn'><i className="fs-5 text-black fa fa fa-moon-o" aria-hidden="true"></i></button>
-          }
+        }
+        </div>
+        <div className="dropdown mx-3" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
+            <i class="fa fa-user fs-4" onClick={toggleProfileOptions} aria-hidden="true"></i>
+            <ul  className={`dropdown-menu ${showProfileOptions ? "show" : ""}`} aria-labelledby="profileDropdown">
+              <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/orders">Orders</Link></li>
+              <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/cart">Cart</Link></li>
+              <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/login">Login</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>

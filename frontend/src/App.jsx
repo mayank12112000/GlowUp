@@ -14,6 +14,8 @@ import Homepage from './pages/Homepage';
 import { ThemeContext } from './context/ThemeProvider';
 import { useContext } from 'react';
 import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -26,6 +28,7 @@ function App() {
       <div className="row shadow">
       <div className='container mx-4 mb-7 mt-4'>
         <Routes>
+          <Route path='/' element={<Homepage/>}/>  
           <Route path='/settings' element={<Settings/>}/>  
           <Route path='/notification' element={<Notification/>}/>  
           <Route path='/profile' element={<Profile/>}/>  
@@ -33,7 +36,8 @@ function App() {
           <Route path='/wishlist' element={<Wishlist/>}/>  
           <Route path='/calender' element={<Calender/>}/>  
           <Route path='/orders' element={<Orders/>}/>  
-          <Route path='/' element={<Homepage/>}/>  
+          <Route path='/signup' element={<Signup/>}/>  
+          <Route path='/login' element={<Login/>}/>  
           <Route path='*' element={<NotFound/>}/>  
         </Routes>  
       </div>

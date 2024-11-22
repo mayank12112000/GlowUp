@@ -166,7 +166,7 @@ a.sidebar-link:hover {
     .sidebar-nav{
         margin: 0.25rem 0 ;
     }
-    .sidebar-wishlist,.sidebar-orders, .sidebar-setting{
+    .sidebar-wishlist,.sidebar-orders{
         display: none !important;
     }
     
@@ -179,6 +179,7 @@ a.sidebar-link:hover {
     .sidebar-link{
         padding: 0rem 0rem !important;
     }
+    
 }
 
 .sidebar-dark a.sidebar-link{
