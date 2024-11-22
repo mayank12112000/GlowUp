@@ -1,4 +1,4 @@
-import { CREATE_USER, INSERT_TOKENS, SELECT_TOKEN, SELECT_USER, UDPATE_TOKENS } from "../queries/queries.js";
+import { CREATE_USER, INSERT_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -32,7 +32,6 @@ const registerUser = asyncHandler(async (req,res)=>{
 })
 
 const loginUser=asyncHandler(async(req,res,next)=>{
-    try {
         const {loginParam,password}= req.body;
     
         if(!loginParam || !password){
@@ -52,9 +51,11 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         if(!isPasswordValid){
             throw new ApiError(401,"Invalid password")
         }
-    
+        // const SELECT_USER_ROLE = 'SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
+
+        const {results:role_code} = await runQuery(SELECT_USER_ROLE,[user.user_seq])
         const accessToken = jwt.sign(
-            {userSeq:user.user_seq, roleSeq:user.role_seq},
+            {userSeq:user.user_seq, roleCode:role_code[0]?.ROLE_CODE},
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn:process.env.ACCESS_TOKEN_EXPIRY}
         )
@@ -76,8 +77,6 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         }
         return res.status(200)
         .json(new ApiResponse(200,{accessToken,refreshToken},"Login successful"))
-    } catch (error) {
-        throw new ApiError(503,"Something went wrong while login, please try again")
-    }
+    
 })
 export {registerUser,loginUser}
