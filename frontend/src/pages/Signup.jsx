@@ -19,8 +19,6 @@ export default function Signup() {
     name: "",
   })
   const [confirmPassword,setConfirmPassword] = useState("")
-  console.log(formData)
-  console.log("confirm pass:",confirmPassword)
   const handleOnChange=(e)=>{
     const {name,value,type} = e.target
     setFormData(pre=>{
