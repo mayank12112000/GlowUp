@@ -23,12 +23,12 @@ export default function AuthProvider({children}) {
     },[])
     const logout= async()=>{
       const {response} = await apiRequest("/api/v1/user/logout","POST",null,token)
-      console.log(response)
       if(response.success){
         setUserSeq(null)
         setRoleCode(null)
         localStorage.removeItem("accessToken")
         localStorage.removeItem("refreshToken")
+        return true
       }
     }
   return (

@@ -1,16 +1,27 @@
 import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../context/ThemeProvider';
 import "./navbar.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [showProfileOptions, setShowProfileOptions] = useState(false);
     const {userSeq,roleCode,logout} = useContext(AuthContext)
+    const navigate = useNavigate()
     // Toggle profile options visibility
     const toggleProfileOptions = () => {
       setShowProfileOptions(!showProfileOptions);
     };
+
+    const handleLogout=async()=>{
+      const resp = await logout()
+      if(resp){
+        toast.success("Logged out successfully",{
+          onClose:()=>navigate("/"),
+        })
+      }
+    }
   return (
     <nav className={`shadow navbar navbar-expand-lg bg-body-tertiary ${theme==="dark"?"navbar-dark":""}`}>
       <div className="container-fluid">
@@ -32,12 +43,15 @@ export default function Navbar() {
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/orders">Orders</Link></li>
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/cart">Cart</Link></li>
               {userSeq ? 
-              <li  onClick={logout} className="dropdown-item">Logout</li>:
+              <li  onClick={handleLogout} className="dropdown-item">Logout</li>:
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/login">Login</Link></li>} 
            </ul>
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
+        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}
+        />
     </nav>
   )
 }

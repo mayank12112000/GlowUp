@@ -65,8 +65,7 @@ export default function Login() {
         <p><small>Don't have a acount? <span><Link to="/signup">Sign Up</Link></span></small></p>
         </form>
         <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
-        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}
-        />
+        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/>
       </div>
   )
 }
