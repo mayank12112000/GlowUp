@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import Spinner from '../components/Spinner';
 import { apiRequest } from '../utils/apiRequest';
 import Alert from '../components/Alert';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../context/AuthProvider';
 

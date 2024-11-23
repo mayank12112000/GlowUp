@@ -1,0 +1,55 @@
+.master-card {
+    min-height: 150px;
+    min-width: 150px;
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #dee2e6; /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #495057; /* Neutral text color */
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .master-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+    background-color: #ffecd2; /* Slightly darker background on hover */
+  }
+  
+  .master-card p {
+    margin: 0;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #212529; /* Darker text for better visibility */
+  }
+  
+  .master-card:active {
+    transform: scale(0.95); /* Slightly shrink when clicked */
+  }
+  
+  .master-card-pastel {
+    background-color: #e8f4f8; /* Light Cyan */
+    color: #333;
+  }
+  
+  .master-card-gradient {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    color: #333;
+  }
+  
+  .master-card-vibrant {
+    background: linear-gradient(135deg, #171822, #0e2238); /* Dark theme gradient */
+  color: #f8f9fa !important; 
+  }
+  .master-card-vibrant:hover {
+    background: linear-gradient(135deg, #171822, #193d63); /* Dark theme gradient */
+  color: #f8f9fa !important; 
+  }
+  

@@ -77,7 +77,6 @@ export default function Sidebar() {
                 <span>Notification</span>
                 </NavLink>
             </li>}
-            
             <li className="sidebar-item sidebar-setting">
                 <NavLink to="/settings" className="sidebar-link">
                 <i className="fa fa-cog fs-4" aria-hidden="true"></i>

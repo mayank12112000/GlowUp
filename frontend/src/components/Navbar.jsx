@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeProvider';
 import "./navbar.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
-import { Bounce, toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -23,7 +23,7 @@ export default function Navbar() {
       }
     }
   return (
-    <nav className={`shadow navbar navbar-expand-lg bg-body-tertiary ${theme==="dark"?"navbar-dark":""}`}>
+    <nav className={`shadow navbar navbar-expand-lg bg-body-tertiary ${theme==="dark"?"navbar-dark":"navbar-light"}`}>
       <div className="container-fluid">
         <div className="logo">
         <img className='navbar-logo' src="media/logo.png" alt="" />

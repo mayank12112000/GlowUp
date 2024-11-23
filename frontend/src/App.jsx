@@ -21,6 +21,14 @@ import { AuthContext } from './context/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
 import Clients from './pages/Clients';
 import Masters from './pages/Masters.jsx';
+import RoleMaster from './pages/masters page/RoleMaster.jsx';
+import NotificaitonMaster from './pages/masters page/NotificationMaster.jsx';
+import ProductMaster from './pages/masters page/ProductMaster.jsx';
+import ProductTypeMaster from './pages/masters page/ProductTypeMaster.jsx';
+import BranchMaster from './pages/masters page/BranchMaster.jsx';
+import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster.jsx';
+import ServicesMaster from './pages/masters page/ServicesMaster.jsx';
+import NoticationMaster from './pages/masters page/NoficationMaster.jsx';
 function App() {
   const { theme } = useContext(ThemeContext);
   const {userSeq,roleCode} = useContext(AuthContext)
@@ -32,7 +40,7 @@ function App() {
       <div className="rest">
       <div className="row shadow">
       <div className='container mx-4 mb-7 mt-4'>
-      <div className="row shadow page shadow px-4" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
+      <div className="row page px-4" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
 
         <Routes>
           <Route path='/' element={<Homepage/>}/>  
@@ -46,11 +54,20 @@ function App() {
           <Route path='/login' element={<Login/>}/>  
           <Route path='/my-profile' element={<Profile/>}/>  
           <Route path='/clients' element={<Clients/>}/>  
-          <Route path='/masters' element={<Masters/>}/>  
+          <Route path='/masters' element={<Masters/>}/>
+          <Route path='/masters/role-master' element={<RoleMaster/>}/>
+          <Route path='/masters/notificaiton-master' element={<NoticationMaster/>}/>
+          <Route path='/masters/product-master' element={<ProductMaster/>}/>
+          <Route path='/masters/product-type-master' element={<ProductTypeMaster/>}/>
+          <Route path='/masters/branch-master' element={<BranchMaster/>}/>
+          <Route path='/masters/discount-promo-master' element={<DiscountPromoMaster/>}/>
+          <Route path='/masters/sercices-master' element={<ServicesMaster/>}/>
+          <Route path='/masters/notification-master' element={<NoticationMaster/>}/>
+
           <Route path='*' element={<NotFound/>}/>  
         </Routes> 
         
-        <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
+        <ToastContainer limit={1} position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
         closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/> 
       </div>
       </div>

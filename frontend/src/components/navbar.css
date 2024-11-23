@@ -2,6 +2,10 @@
   background-color: #0e2238 !important;
   /* color: white; */
 }
+.navbar-light{
+  background-color: #fcb69f !important; /* Light Coral */
+
+}
 .navbar-logo {
   width: 1.95rem;
   border-radius: 50%;

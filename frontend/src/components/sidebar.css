@@ -188,10 +188,14 @@ a.sidebar-link:hover {
 
 .sidebar-light a.sidebar-link {
     color: black;
-    background-color: white;
+    background-color: #fcb69f !important; /* Light Coral */
     
 }
 .sidebar-dark{
     background-color: #0e2238;
     color: white;
+}
+
+.sidebar-light{
+    background-color: #fcb69f !important; /* Light Coral */
 }
