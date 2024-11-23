@@ -49,9 +49,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
-        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}
-        />
     </nav>
   )
 }

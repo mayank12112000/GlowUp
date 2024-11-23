@@ -64,8 +64,6 @@ export default function Login() {
           <Button disabled={(loading || loggedIn) ? true : false} child={loading && <Spinner/>} type="submit" text="Login" variant="secondary" />
         <p><small>Don't have a acount? <span><Link to="/signup">Sign Up</Link></span></small></p>
         </form>
-        <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
-        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/>
       </div>
   )
 }

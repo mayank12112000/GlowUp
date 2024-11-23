@@ -18,10 +18,10 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Role from './pages/Role';
 import { AuthContext } from './context/AuthProvider.jsx';
+import { Bounce, ToastContainer } from 'react-toastify';
 function App() {
   const { theme } = useContext(ThemeContext);
   const {userSeq,roleCode} = useContext(AuthContext)
-  console.log(userSeq,roleCode)
   return (
     <>
       <Navbar/>
@@ -42,7 +42,10 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>  
           <Route path='/login' element={<Login/>}/>  
           <Route path='*' element={<Role/>}/>  
-        </Routes>  
+        </Routes> 
+        
+        <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
+        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/> 
       </div>
     </div>
     </div>
