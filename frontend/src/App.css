@@ -171,3 +171,9 @@ p {
 .page{
   min-height: calc(100vh - 9.5rem);
 }
+.dropdown-item{
+  cursor: pointer;
+}
+.eye-input{
+  cursor: pointer;
+}
