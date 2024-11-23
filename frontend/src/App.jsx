@@ -19,6 +19,8 @@ import Signup from './pages/Signup';
 import Role from './pages/Role';
 import { AuthContext } from './context/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
+import Clients from './pages/Clients';
+import Masters from './pages/Masters.jsx';
 function App() {
   const { theme } = useContext(ThemeContext);
   const {userSeq,roleCode} = useContext(AuthContext)
@@ -30,22 +32,27 @@ function App() {
       <div className="rest">
       <div className="row shadow">
       <div className='container mx-4 mb-7 mt-4'>
+      <div className="row shadow page shadow px-4" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
+
         <Routes>
           <Route path='/' element={<Homepage/>}/>  
           <Route path='/settings' element={<Settings/>}/>  
           <Route path='/notification' element={<Notification/>}/>  
-          <Route path='/profile' element={<Profile/>}/>  
           <Route path='/cart' element={<Cart/>}/>  
           <Route path='/wishlist' element={<Wishlist/>}/>  
           <Route path='/calender' element={<Calender/>}/>  
           <Route path='/orders' element={<Orders/>}/>  
           <Route path='/signup' element={<Signup/>}/>  
           <Route path='/login' element={<Login/>}/>  
-          <Route path='*' element={<Role/>}/>  
+          <Route path='/my-profile' element={<Profile/>}/>  
+          <Route path='/clients' element={<Clients/>}/>  
+          <Route path='/masters' element={<Masters/>}/>  
+          <Route path='*' element={<NotFound/>}/>  
         </Routes> 
         
         <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
         closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/> 
+      </div>
       </div>
     </div>
     </div>

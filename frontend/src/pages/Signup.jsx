@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeProvider";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import "./signup.css"
 import { apiRequest } from "../utils/apiRequest";
 import Spinner from "../components/Spinner";
 import Alert from "../components/Alert";
+import { toast } from "react-toastify";
 export default function Signup() {
   const { theme } = useContext(ThemeContext);
   const [loading,setLoading] = useState(null)
@@ -41,6 +41,9 @@ export default function Signup() {
       const {response} = await apiRequest("/api/v1/user/register","POST",formData)
       if(response.success){
         setError(false)
+        toast.success("Logged out successfully",{
+          onClose:()=>navigate("/"),
+        })
       }else{
         setError({message : response.message})
       }
@@ -50,7 +53,6 @@ export default function Signup() {
 
   
   return (
-    <div className="row shadow signup-page" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
         <form onSubmit={handleRegister}>
         {error && <Alert message={error?.message}/>}
         {error===false && <Alert success={true} message={"User created successfully"}/>}
@@ -81,6 +83,5 @@ export default function Signup() {
           <Button disabled={loading ? true : false} child={loading && <Spinner/>} type="submit" text="Sing Up" variant="secondary" />
         <p><small>Already have an acount <span><Link to="/login">login</Link></span></small></p>
         </form>
-      </div>
   );
 }

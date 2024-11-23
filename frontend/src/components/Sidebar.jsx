@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./sidebar.css"
 import { ThemeContext } from '../context/ThemeProvider';
+import { AuthContext } from './../context/AuthProvider';
 export default function Sidebar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
-
+    const {userSeq,roleCode} = useContext(AuthContext)
     const [open,setOpen] = useState(false)
     const handleToggle = ()=>{
         document.querySelector("#sidebar").classList.toggle("expand");
@@ -28,7 +29,14 @@ export default function Sidebar() {
                 <span>Home</span>
                 </NavLink>
             </li>
-            
+            {roleCode === "ADM"?
+            <li className="sidebar-item sidebar-wishlist">
+            <NavLink to="/masters" className="sidebar-link">
+            <i class="fa fa-th-list fs-4" aria-hidden="true"></i>
+            <span>Masters</span>
+            </NavLink>
+        </li>:
+        <>
             <li className="sidebar-item sidebar-wishlist">
                 <NavLink to="/wishlist" className="sidebar-link">
                 <i className="fa fa-heart fs-4" aria-hidden="true"></i>
@@ -41,6 +49,8 @@ export default function Sidebar() {
                 <span>Cart</span>
                 </NavLink>
             </li>
+        </>
+}
           <li className="sidebar-item">
                 <NavLink to="/calender" className="sidebar-link">
                 <i className="fa fa-calendar fs-4" aria-hidden="true"></i>
@@ -54,13 +64,19 @@ export default function Sidebar() {
                 <span>Orders</span>
                 </NavLink>
             </li>
-            
+            {roleCode==="ADM"?
+            <li className="sidebar-item sidebar-wishlist">
+            <NavLink to="/clients" className="sidebar-link">
+            <i class="fa fa-smile-o fs-4" aria-hidden="true"></i>
+            <span>Clients</span>
+            </NavLink>
+        </li>:
             <li className="sidebar-item">
                 <NavLink to="/notification" className="sidebar-link">
                 <i className="fa fa-bell fs-4" aria-hidden="true"></i>
                 <span>Notification</span>
                 </NavLink>
-            </li>
+            </li>}
             
             <li className="sidebar-item sidebar-setting">
                 <NavLink to="/settings" className="sidebar-link">

@@ -168,3 +168,6 @@ p {
   font-weight: bold;
   margin-left: 0.25rem;
 }
+.page{
+  min-height: calc(100vh - 9.5rem);
+}
