@@ -12,14 +12,16 @@ import Orders from './pages/Orders';
 import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage';
 import { ThemeContext } from './context/ThemeProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Role from './pages/Role';
+import { AuthContext } from './context/AuthProvider.jsx';
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
+  const { theme } = useContext(ThemeContext);
+  const {userSeq,roleCode} = useContext(AuthContext)
+  console.log(userSeq,roleCode)
   return (
     <>
       <Navbar/>

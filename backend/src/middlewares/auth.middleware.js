@@ -11,7 +11,6 @@ export const verifyJWT=asyncHandler(async(req,_,next)=>{
             throw new ApiError(403,"authoriztion missing")        
         }
         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","")
-        console.log("token for validation",token)
     
         if(!token){
             throw new ApiError(401,"Unauthorized request: Please Re-login")

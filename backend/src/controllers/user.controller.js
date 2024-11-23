@@ -6,6 +6,23 @@ import { runQuery } from "../utils/runQuery.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 
+const validateUser=asyncHandler(async(req,res,next)=>{
+    const token= req.headers.authorization.replace("Bearer ","")
+    if(!token){
+        return res.status(401).json({isValid:false})
+    }
+    try {
+        const decoded = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
+        if(!decoded.userSeq){
+            return res.status(401).json({isValid:false})
+        }else{
+            return res.status(200).json({isValid:true})
+        }
+    } catch (error) {
+        throw new ApiError(503,"Something went wrong while validating user")
+    }
+})
+
 const registerUser = asyncHandler(async (req,res)=>{
     const {name,mobile,roleSeq,userName,email,password} = req.body
    
@@ -16,15 +33,15 @@ const registerUser = asyncHandler(async (req,res)=>{
         throw new ApiError(400,"Password must have atlease 8 characters")
     }
     // check if users already exits
-    const {results} = await runQuery(SELECT_USER,[userName,email,mobile])
-    if(results?.length > 0){
+    const user = await runQuery(SELECT_USER,[userName,email,mobile])
+    if(user?.length > 0){
         throw new ApiError(401,"User name/ email id/ mobile number already exists")
     }
     // hash the password
     const hashedPassword = await bcrypt.hash(password,10)
 
     // insert into users table
-    await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:1])
+    await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:2])
     
     // after successfully insertion return apiresponse
     return res.status(201).json(new ApiResponse(
@@ -39,9 +56,8 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         }
         // const SELECT_USER = "SELECT * FROM USERS WHERE USERNAME = LOWER(?) OR EMAIL = LOWER(?) OR MOBILE = ?"
     
-        const {results} = await runQuery(SELECT_USER,[loginParam,loginParam,loginParam])
-        const user = results[0]
-        console.log(user)
+        const users = await runQuery(SELECT_USER,[loginParam,loginParam,loginParam])
+        const user = users[0]
         if(!user){
             throw new ApiError(401,"Invalid User Name/ email/ mobile number")
         }
@@ -53,7 +69,7 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         }
         // const SELECT_USER_ROLE = 'SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
 
-        const {results:role_code} = await runQuery(SELECT_USER_ROLE,[user.user_seq])
+        const role_code = await runQuery(SELECT_USER_ROLE,[user.user_seq])
         const accessToken = jwt.sign(
             {userSeq:user.user_seq, roleCode:role_code[0]?.ROLE_CODE},
             process.env.ACCESS_TOKEN_SECRET,
@@ -66,7 +82,7 @@ const loginUser=asyncHandler(async(req,res,next)=>{
             { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
         );
     
-        const {results:existingToken} = await runQuery(SELECT_TOKEN,[user.user_seq])
+        const existingToken = await runQuery(SELECT_TOKEN,[user.user_seq])
         
         if(existingToken.length>0){
             // UDPATE_TOKENS = "UPDATE  USER_TOKENS(ACCESS_TOKEN=?,REFRESH_TOKEN=?,CREATED_AT=NOW(),UPDATED_AT=NOW() WHERE USER_SEQ = ?)"
@@ -82,7 +98,7 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         return res.status(200)
         .cookie("accessToken",accessToken,options)
         .cookie("refreshToken",refreshToken,options)
-        .json(new ApiResponse(200,{accessToken,refreshToken},"Login successful"))
+        .json(new ApiResponse(200,{accessToken,refreshToken,userSeq:user.user_seq,roleCode:role_code[0].ROLE_CODE},"Login successful"))
     
 })
-export {registerUser,loginUser}
+export {registerUser,loginUser,validateUser}

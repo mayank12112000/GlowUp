@@ -4,11 +4,11 @@ import { runQuery } from "../utils/runQuery.js";
 import {ApiResponse} from "../utils/ApiResponse.js"
 const getAllRoles = asyncHandler(async(req,res,next)=>{
     const roles = await runQuery(SELECT_ROLES)
-    console.log("sdfasd",roles.results)
+    console.log("sdfasd",roles)
     res
     .status(200)
     .json(
-        new ApiResponse(200,roles.results,"roles got successfully")
+        new ApiResponse(200,roles,"roles got successfully")
     )
 })
 

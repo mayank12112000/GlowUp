@@ -8,6 +8,7 @@ import { apiRequest } from '../utils/apiRequest';
 import Alert from '../components/Alert';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../context/AuthProvider';
 
 export default function Login() {
   const { theme } = useContext(ThemeContext);
@@ -15,6 +16,7 @@ export default function Login() {
   const [error,setError] = useState(null)
   const [loggedIn,setLoggedIn] = useState(null)
   const [formData,setFormData] = useState({loginParam: "",password: ""})
+  const {setRoleCode,setUserSeq} = useContext(AuthContext)
   const navigate = useNavigate()
   
 
@@ -36,9 +38,8 @@ export default function Login() {
       setLoading(false)
       setError(response.message)
     }else{
-      console.log(response)
-      localStorage.setItem("glowup_accessToken",response.data.accessToken)
-      localStorage.setItem("glowup_refreshToken",response.data.refreshToken)
+      localStorage.setItem("accessToken",response.data.accessToken)
+      localStorage.setItem("refreshToken",response.data.refreshToken)
       toast.success("Login successful",{
         onClose:()=>navigate("/"),
         onOpen:()=> setLoggedIn(true)
@@ -63,7 +64,7 @@ export default function Login() {
         <p><small>Don't have a acount? <span><Link to="/signup">Sign Up</Link></span></small></p>
         </form>
         <ToastContainer position="top-right" autoClose={800} hideProgressBar={false} newestOnTop={false}
-        closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme={theme} transition= {Bounce}
+        closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}
         />
       </div>
   )

@@ -7,7 +7,7 @@ const runQuery = async (query, params = []) => {
   }
   try {
     const [results, fields] = await connection.execute(query, params);
-    return { results, fields };
+    return results;
   } catch (error) {
     console.error("Error running query:", error);
     throw new ApiError(500,"database query failed:",error.message);
