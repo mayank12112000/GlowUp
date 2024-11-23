@@ -30,7 +30,7 @@ export default function Login() {
     }
     setLoading(true)
     setError(null)
-    const {response} = await apiRequest("/api/v1/user/login","POST",formData)
+    const response = await apiRequest("/api/v1/user/login","POST",formData)
     if(!response?.success){
       setLoading(false)
       setError(response.message)

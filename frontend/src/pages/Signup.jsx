@@ -38,7 +38,7 @@ export default function Signup() {
     else if(formData.mobile.toString().length !==10){
       alert("enter correct mobile number")
     }else{
-      const {response} = await apiRequest("/api/v1/user/register","POST",formData)
+      const response = await apiRequest("/api/v1/user/register","POST",formData)
       if(response.success){
         setError(false)
         toast.success("Logged out successfully",{

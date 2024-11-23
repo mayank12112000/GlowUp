@@ -14,7 +14,7 @@ export const apiRequest = async (url, method = "GET", requestBody = null, token 
     try {
         const response = await fetch(url, options);
         const data = await response.json(); // Wait for the JSON data to resolve
-        return { response:data };
+        return data;
     } catch (error) {
         console.error("Something went wrong:", error);
         return { response: null, error: error };

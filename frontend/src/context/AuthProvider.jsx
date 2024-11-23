@@ -22,7 +22,7 @@ export default function AuthProvider({children}) {
         }
     },[])
     const logout= async()=>{
-      const {response} = await apiRequest("/api/v1/user/logout","POST",null,token)
+      const response = await apiRequest("/api/v1/user/logout","POST",null,token)
       if(response.success){
         setUserSeq(null)
         setRoleCode(null)

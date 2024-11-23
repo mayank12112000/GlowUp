@@ -1,4 +1,4 @@
-import { CREATE_USER, INSERT_TOKENS, REMOVE_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_BY_USER_SEQ, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
+import { CREATE_USER, GET_CURRENT_USER_ROLE, INSERT_TOKENS, REMOVE_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_BY_USER_SEQ, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -122,4 +122,11 @@ const logoutUser = asyncHandler(async(req,res,next)=>{
     .json(new ApiResponse(200,{},"user logged out"))
 
 })
-export {registerUser,loginUser,validateUser,logoutUser}
+
+const currentUserRole = asyncHandler(async(req,res,next)=>{
+    // GET_CURRENT_USER_ROLE = "SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?"
+    const [response] = await runQuery(GET_CURRENT_USER_ROLE,[req.userSeq])
+    res.status(200).json(new ApiResponse(200,{roleCode:response.ROLE_CODE},"role code retrieved"))
+})
+
+export {registerUser,loginUser,validateUser,logoutUser,currentUserRole}

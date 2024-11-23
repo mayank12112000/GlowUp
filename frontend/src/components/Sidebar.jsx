@@ -30,9 +30,9 @@ export default function Sidebar() {
                 </NavLink>
             </li>
             {roleCode === "ADM"?
-            <li className="sidebar-item sidebar-wishlist">
+            <li className="sidebar-item sidebar-masters">
             <NavLink to="/masters" className="sidebar-link">
-            <i class="fa fa-th-list fs-4" aria-hidden="true"></i>
+            <i className="fa fa-th-list fs-4" aria-hidden="true"></i>
             <span>Masters</span>
             </NavLink>
         </li>:
@@ -65,9 +65,9 @@ export default function Sidebar() {
                 </NavLink>
             </li>
             {roleCode==="ADM"?
-            <li className="sidebar-item sidebar-wishlist">
+            <li className="sidebar-item sidebar-clients">
             <NavLink to="/clients" className="sidebar-link">
-            <i class="fa fa-smile-o fs-4" aria-hidden="true"></i>
+            <i className="fa fa-smile-o fs-4" aria-hidden="true"></i>
             <span>Clients</span>
             </NavLink>
         </li>:
