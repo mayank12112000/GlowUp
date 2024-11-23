@@ -1,4 +1,4 @@
-import { CREATE_USER, INSERT_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
+import { CREATE_USER, INSERT_TOKENS, REMOVE_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_BY_USER_SEQ, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -101,4 +101,25 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         .json(new ApiResponse(200,{accessToken,refreshToken,userSeq:user.user_seq,roleCode:role_code[0].ROLE_CODE},"Login successful"))
     
 })
-export {registerUser,loginUser,validateUser}
+
+const logoutUser = asyncHandler(async(req,res,next)=>{
+    const userSeq = req.userSeq;
+    console.log(userSeq)
+//    SELECT_USER_BY_USER_SEQ = "SELECT * FROM USERS WHERE USER_SEQ = ?"
+
+    const user = await runQuery(SELECT_USER_BY_USER_SEQ,[userSeq])
+    
+    // remove tokens from db
+//   REMOVE_TOKENS = "UPDATE user_tokens SET access_token = null,refresh_token=null WHERE user_seq = ?"
+    const resp = await runQuery(REMOVE_TOKENS,[userSeq])
+    const options={
+        httpOnly:true,
+        secure:true
+    }
+    return res.status(200)
+    .clearCookie("accessToken",options)
+    .clearCookie("refreshToken",options)
+    .json(new ApiResponse(200,{},"user logged out"))
+
+})
+export {registerUser,loginUser,validateUser,logoutUser}

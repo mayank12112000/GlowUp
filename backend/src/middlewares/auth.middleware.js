@@ -22,7 +22,7 @@ export const verifyJWT=asyncHandler(async(req,_,next)=>{
         if(!userSeq){
             throw new ApiError(401,"Invalid access: User not found. Please re-login")
         }
-        req.userSeq = userSeq
+        req.userSeq = userSeq[0].USER_SEQ
         next()
     
 })

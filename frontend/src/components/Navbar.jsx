@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react'
 import { ThemeContext } from '../context/ThemeProvider';
 import "./navbar.css"
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [showProfileOptions, setShowProfileOptions] = useState(false);
-
+    const {userSeq,roleCode,logout} = useContext(AuthContext)
     // Toggle profile options visibility
     const toggleProfileOptions = () => {
       setShowProfileOptions(!showProfileOptions);
@@ -30,8 +31,10 @@ export default function Navbar() {
             <ul  className={`dropdown-menu ${showProfileOptions ? "show" : ""}`} aria-labelledby="profileDropdown">
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/orders">Orders</Link></li>
               <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/cart">Cart</Link></li>
-              <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/login">Login</Link></li>
-            </ul>
+              {userSeq ? 
+              <li  onClick={logout} className="dropdown-item">Logout</li>:
+              <li  onClick={toggleProfileOptions}><Link className="dropdown-item" to="/login">Login</Link></li>} 
+           </ul>
           </div>
         </div>
       </div>

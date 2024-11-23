@@ -12,13 +12,12 @@ import { AuthContext } from '../context/AuthProvider';
 
 export default function Login() {
   const { theme } = useContext(ThemeContext);
+  const {setRoleCode,setUserSeq} = useContext(AuthContext)
   const [loading,setLoading] = useState(null)
   const [error,setError] = useState(null)
   const [loggedIn,setLoggedIn] = useState(null)
   const [formData,setFormData] = useState({loginParam: "",password: ""})
-  const {setRoleCode,setUserSeq} = useContext(AuthContext)
   const navigate = useNavigate()
-  
 
   const handleOnChange=(e)=>{
     const {name,value} = e.target
@@ -40,6 +39,8 @@ export default function Login() {
     }else{
       localStorage.setItem("accessToken",response.data.accessToken)
       localStorage.setItem("refreshToken",response.data.refreshToken)
+      setUserSeq(response.data.userSeq)
+      setRoleCode(response.data.roleCode)
       toast.success("Login successful",{
         onClose:()=>navigate("/"),
         onOpen:()=> setLoggedIn(true)
