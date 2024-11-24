@@ -5,7 +5,7 @@ import { apiRequest } from '../utils/apiRequest'
 import { toast } from 'react-toastify';
 import MasterCard from '../components/masterCard';
 import Spinner from '../components/Spinner';
-import RoleMaster from './masters page/RoleMaster';
+import RoleMaster from './masters page/Role Master/RoleMaster';
 
 export default function Masters() {
     

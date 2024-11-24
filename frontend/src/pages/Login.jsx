@@ -47,7 +47,7 @@ export default function Login() {
   }
   return (
         <form onSubmit={handleLogin}>
-{error?.message && <Alert message={error.message} />}
+          {error?.message && <Alert message={error.message} />}
           <div className="row">
             <div className="col-sm-6">
             <Input name="loginParam" onChange={handleOnChange} value={formData.loginParam} type="text" label="User Name/email/mobile" required={true}/>

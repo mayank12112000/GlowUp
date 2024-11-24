@@ -1,0 +1,28 @@
+import React from 'react'
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import RoleList from './RoleList';
+import RoleEdit from './RoleEdit';
+import RoleDetails from './RoleDetails';
+import Button from './../../../components/Button';
+import AddRole from './AddRole';
+
+export default function RoleMaster() {
+  const path = useLocation()
+  const param = useParams()
+  return (
+    <div className='shadow page'>
+      <div className="heading m-2 d-flex justify-content-around align-items-center">
+      <h2 className="text-center">Role Master</h2>
+     {param['*'] !=="add-role" && <Link to="/masters/role-master/add-role">
+       <Button text="Add Role" variant="secondary" />
+      </Link>}
+      </div>
+    <Routes>
+      <Route path="/" element={<RoleList />} />
+      <Route path="/:roleCode" element={<RoleDetails />} />
+      <Route path="/:roleCode/edit" element={<RoleEdit />} />
+      <Route path="/add-role" element={<AddRole />} />
+    </Routes>
+    </div>
+  )
+}

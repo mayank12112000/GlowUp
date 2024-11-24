@@ -1,4 +1,4 @@
-export const SELECT_ROLES = "SELECT * FROM ROLE"
+export const SELECT_ROLES = "SELECT a.role_seq,a.role_name,a.role_code,b.username as created_by FROM ROLE a left join users b on a.created_by = b.user_seq"
  // register user
 export const SELECT_SINGLE_USER = "SELECT USER_SEQ FROM USERS WHERE USER_SEQ = ?"
 export const SELECT_USER = "SELECT * FROM USERS WHERE USERNAME = LOWER(?) OR EMAIL = LOWER(?) OR MOBILE = ?"

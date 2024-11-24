@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function RoleMaster() {
+export default function RoleDetails() {
   return (
     <div>
-      role master
+      role details
     </div>
   )
 }

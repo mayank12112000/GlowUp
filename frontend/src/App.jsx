@@ -21,7 +21,7 @@ import { AuthContext } from './context/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
 import Clients from './pages/Clients';
 import Masters from './pages/Masters.jsx';
-import RoleMaster from './pages/masters page/RoleMaster.jsx';
+import RoleMaster from './pages/masters page/Role Master/RoleMaster.jsx';
 import NotificaitonMaster from './pages/masters page/NotificationMaster.jsx';
 import ProductMaster from './pages/masters page/ProductMaster.jsx';
 import ProductTypeMaster from './pages/masters page/ProductTypeMaster.jsx';
@@ -42,7 +42,7 @@ function App() {
       <div className="rest">
       <div className="row shadow">
       <div className='container mx-4 mb-7 mt-4'>
-      <div className="row page px-4" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
+      <div className="row page px-2" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
 
         <Routes>
           <Route path='/' element={<Homepage/>}/>  
@@ -57,7 +57,7 @@ function App() {
           <Route path='/my-profile' element={<Profile/>}/>  
           <Route path='/clients' element={<Clients/>}/>  
           <Route path='/masters' element={<ProtectedAdminRoute><Masters/></ProtectedAdminRoute>}/>
-          <Route path='/masters/role-master' element={<RoleMaster/>}/>
+          <Route path='/masters/role-master/*' element={<ProtectedAdminRoute><RoleMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/notificaiton-master' element={<NoticationMaster/>}/>
           <Route path='/masters/product-master' element={<ProductMaster/>}/>
           <Route path='/masters/product-type-master' element={<ProductTypeMaster/>}/>
