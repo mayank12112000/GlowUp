@@ -5,7 +5,6 @@ import {ApiResponse} from "../utils/ApiResponse.js"
 import { ApiError } from "../utils/ApiError.js";
 const getAllRoles = asyncHandler(async(req,res,next)=>{
     const roles = await runQuery(SELECT_ROLES)
-    console.log("sdfasd",roles)
     res
     .status(200)
     .json(

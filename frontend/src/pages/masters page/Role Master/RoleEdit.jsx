@@ -23,7 +23,6 @@ export default function RoleEdit() {
   const getRoles = async () => {
     try {
       const response = await apiRequest(`/api/v1/role/?roleSeq=${param.roleCode}`, "GET", null, token);
-      console.log(response)
       const {role_code,role_seq,role_name,is_admin,is_employee} = await response.data
       setFormData({roleCode:role_code,roleSeq:role_seq,roleName:role_name,isAdmin:is_admin,isEmployee:is_employee});
     } catch (err) {
@@ -51,7 +50,6 @@ export default function RoleEdit() {
       })
     }
   }
-  console.log(formData)
   return (
     <form onSubmit={handleSubmit} className='my-3' >
       {error?.message && <Alert message={error?.message} />}
