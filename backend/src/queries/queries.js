@@ -1,6 +1,7 @@
 // role master
 export const SELECT_ROLES = "SELECT a.role_seq,a.role_name,a.role_code,b.username as created_by FROM ROLE a left join users b on a.created_by = b.user_seq"
 export const ADD_ROLE = 'INSERT INTO ROLE (IS_ADMIN,IS_EMPLOYEE,ROLE_CODE,ROLE_NAME,CREATED_BY,CREATED_ON,UPDATED_ON) VALUES(?,?,?,?,?,NOW(),NOW())'
+export const SELECT_ROLE = "SELECT * FROM ROLE WHERE ROLE_CODE = LOWER(?) OR ROLE_NAME=LOWER(?)"
  // register user
 export const SELECT_SINGLE_USER = 'SELECT B.ROLE_CODE,A.USER_SEQ FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
 export const SELECT_USER = "SELECT * FROM USERS WHERE USERNAME = LOWER(?) OR EMAIL = LOWER(?) OR MOBILE = ?"
