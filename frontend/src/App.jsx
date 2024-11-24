@@ -16,7 +16,6 @@ import { useContext, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Role from './pages/Role';
 import { AuthContext } from './context/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
 import Clients from './pages/Clients';
