@@ -1,12 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../context/AuthProvider'
-import { Route, Routes, useNavigate } from 'react-router-dom'
-import { apiRequest } from '../utils/apiRequest'
-import { toast } from 'react-toastify';
-import MasterCard from '../components/masterCard';
-import Spinner from '../components/Spinner';
-import RoleMaster from './masters page/Role Master/RoleMaster';
+import React from 'react'
 
+import MasterCard from '../components/masterCard';
 export default function Masters() {
     
   return (

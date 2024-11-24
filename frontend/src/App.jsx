@@ -12,16 +12,14 @@ import Orders from './pages/Orders';
 import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage';
 import { ThemeContext } from './context/ThemeProvider';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import { AuthContext } from './context/AuthProvider.jsx';
 import { Bounce, ToastContainer } from 'react-toastify';
 import Clients from './pages/Clients';
 import Masters from './pages/Masters.jsx';
 import RoleMaster from './pages/masters page/Role Master/RoleMaster.jsx';
-import NotificaitonMaster from './pages/masters page/NotificationMaster.jsx';
 import ProductMaster from './pages/masters page/ProductMaster.jsx';
 import ProductTypeMaster from './pages/masters page/ProductTypeMaster.jsx';
 import BranchMaster from './pages/masters page/BranchMaster.jsx';
@@ -32,7 +30,6 @@ import MastersPage from './pages/masters page/MastersPage.jsx';
 import ProtectedAdminRoute from './utils/ProtectedAdminRoute.jsx';
 function App() {
   const { theme } = useContext(ThemeContext);
-  const {userSeq,roleCode} = useContext(AuthContext)
   return (
     <>
       <Navbar/>
