@@ -8,11 +8,11 @@ import {apiRequest} from "../../../utils/apiRequest.js"
 import { toast } from 'react-toastify';
 export default function RoleEdit() {
   const [error,setError] = useState(null)
-  const [formData,setFormData] = useState({roleCode:"",roleName:"",isEmployee:false,isAdmin:false})
+  const [formData,setFormData] = useState({roleSeq:"",roleCode:"",roleName:"",isEmployee:false,isAdmin:false})
   const token = localStorage.getItem("accessToken")
   const [loading,setLoading] = useState(null)
   const [role,setRole] = useState(null)
-  const {roleCode} = useParams()
+  const param = useParams()
   const navigate = useNavigate()
   const handleOnChange =(e)=>{
     const {name,value,checked,type} = e.target
@@ -22,8 +22,10 @@ export default function RoleEdit() {
   }
   const getRoles = async () => {
     try {
-      const response = await apiRequest(`/api/v1/role/?roleSeq=${roleCode}`, "GET", null, token);
-      setFormData(response?.data || []);
+      const response = await apiRequest(`/api/v1/role/?roleSeq=${param.roleCode}`, "GET", null, token);
+      console.log(response)
+      const {role_code,role_seq,role_name,is_admin,is_employee} = await response.data
+      setFormData({roleCode:role_code,roleSeq:role_seq,roleName:role_name,isAdmin:is_admin,isEmployee:is_employee});
     } catch (err) {
       setError(true);
       console.error(err);
@@ -34,26 +36,39 @@ export default function RoleEdit() {
   useEffect(() => {
     getRoles();
   }, []);
-  const handleSubmit=()=>{
-
+  const handleSubmit= async(e)=>{
+    e.preventDefault()
+    if(!e.target.checkValidity()){
+      e.target.reportValidity()    
+    }
+    const resp = await apiRequest("/api/v1/role","PATCH",formData,token)
+    if(!resp || !resp?.success){
+      toast.warn(resp.message)
+    }
+    if(resp.success){
+      toast.success("Role edited successfully",{
+        onClose:()=>navigate("/masters/role-master")
+      })
+    }
   }
+  console.log(formData)
   return (
     <form onSubmit={handleSubmit} className='my-3' >
       {error?.message && <Alert message={error?.message} />}
       <div className="row">
         <div className="col-sm-6">
-        <Input name="role_code" onChange={handleOnChange} value={formData.role_code} type="text" label="Role Code" required={true}/>
+        <Input name="roleCode" onChange={handleOnChange} value={formData.roleCode} type="text" label="Role Code" required={true}/>
         </div>
         <div className="col-sm-6">
-        <Input name="role_name" onChange={handleOnChange} value={formData.role_name} type="text" label="Role Name" required={true}/>
+        <Input name="roleName" onChange={handleOnChange} value={formData.roleName} type="text" label="Role Name" required={true}/>
         </div>
       </div>
       <div className="row mb-3">
         <div className="col-sm-6">
-          <Radio required={true} name="is_Employee" onChange={handleOnChange} checked={formData.is_Employee} value={true}  label={"Is Employee"}/>
+          <Radio required={true} name="isEmployee" onChange={handleOnChange} checked={formData.isEmployee} value={true}  label={"Is Employee"}/>
         </div>
         <div className="col-sm-6">
-        <Radio required={true} name="is_Admin" onChange={handleOnChange} checked={formData.is_Admin} value={true}  label={"Is Admin"}/>
+        <Radio required={true} name="isAdmin" onChange={handleOnChange} checked={formData.isAdmin} value={true}  label={"Is Admin"}/>
         </div>
       </div>
       <Button disabled={(loading) ? true : false} child={loading && <Spinner/>} type="submit" text="Edit" variant="secondary" />
