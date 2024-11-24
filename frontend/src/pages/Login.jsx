@@ -16,7 +16,6 @@ export default function Login() {
   const [loggedIn,setLoggedIn] = useState(null)
   const [formData,setFormData] = useState({loginParam: "",password: ""})
   const navigate = useNavigate()
-
   const handleOnChange=(e)=>{
     const {name,value} = e.target
     setFormData(pre=>{
@@ -31,9 +30,9 @@ export default function Login() {
     setLoading(true)
     setError(null)
     const response = await apiRequest("/api/v1/user/login","POST",formData)
-    if(!response?.success){
+    if(!response?.success || !response){
       setLoading(false)
-      setError(response.message)
+      setError(response || "Network issue")
     }else{
       localStorage.setItem("accessToken",response.data.accessToken)
       localStorage.setItem("refreshToken",response.data.refreshToken)
@@ -48,8 +47,7 @@ export default function Login() {
   }
   return (
         <form onSubmit={handleLogin}>
-        {error && <Alert message={error?.message}/>}
-        {error===false && <Alert success={true} message={"User created successfully"}/>}
+{error?.message && <Alert message={error.message} />}
           <div className="row">
             <div className="col-sm-6">
             <Input name="loginParam" onChange={handleOnChange} value={formData.loginParam} type="text" label="User Name/email/mobile" required={true}/>

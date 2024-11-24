@@ -29,6 +29,8 @@ import BranchMaster from './pages/masters page/BranchMaster.jsx';
 import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster.jsx';
 import ServicesMaster from './pages/masters page/ServicesMaster.jsx';
 import NoticationMaster from './pages/masters page/NoficationMaster.jsx';
+import MastersPage from './pages/masters page/MastersPage.jsx';
+import ProtectedAdminRoute from './utils/ProtectedAdminRoute.jsx';
 function App() {
   const { theme } = useContext(ThemeContext);
   const {userSeq,roleCode} = useContext(AuthContext)
@@ -54,7 +56,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>  
           <Route path='/my-profile' element={<Profile/>}/>  
           <Route path='/clients' element={<Clients/>}/>  
-          <Route path='/masters' element={<Masters/>}/>
+          <Route path='/masters' element={<ProtectedAdminRoute><Masters/></ProtectedAdminRoute>}/>
           <Route path='/masters/role-master' element={<RoleMaster/>}/>
           <Route path='/masters/notificaiton-master' element={<NoticationMaster/>}/>
           <Route path='/masters/product-master' element={<ProductMaster/>}/>
@@ -63,6 +65,7 @@ function App() {
           <Route path='/masters/discount-promo-master' element={<DiscountPromoMaster/>}/>
           <Route path='/masters/sercices-master' element={<ServicesMaster/>}/>
           <Route path='/masters/notification-master' element={<NoticationMaster/>}/>
+          <Route path='/masters/:type' element={<MastersPage/>}/>
 
           <Route path='*' element={<NotFound/>}/>  
         </Routes> 

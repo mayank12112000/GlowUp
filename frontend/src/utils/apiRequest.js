@@ -1,4 +1,4 @@
-export const apiRequest = async (url, method = "GET", requestBody = null, token = "", headers = {}) => {
+export const   apiRequest = async (url, method = "GET", requestBody = null, token = "", headers = {}) => {
     const defaultHeaders = {
         'Content-Type': 'application/json',
         'Authorization': token ? `Bearer ${token}` : "" 
@@ -15,8 +15,8 @@ export const apiRequest = async (url, method = "GET", requestBody = null, token 
         const response = await fetch(url, options);
         const data = await response.json(); // Wait for the JSON data to resolve
         return data;
-    } catch (error) {
+    } catch (error) { // if internet and backend not responding
         console.error("Something went wrong:", error);
-        return { response: null, error: error };
+        return  {statusCode:503,success:false,message:"Internet connection weak"};
     }
 };

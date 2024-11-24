@@ -12,8 +12,8 @@ export default function Input({label,type,required=false,autoComplete,...props})
         <input  {...props} required={required} type={type!="password"?type:show?"text":"password"} className="shadow-sm form-control" aria-describedby="basic-addon3 basic-addon4"/>
         {type=="password" && 
         <>
-        {show ? <i onClick={toggleShow} type='button' style={{position:"absolute",right:"1rem",top:"0.55rem",zIndex:"800000"}} class="fa fs-6 px-1 eye-input fa-eye-slash" aria-hidden="true"></i>:
-        <i onClick={toggleShow} type='button' style={{position:"absolute",right:"1rem",top:"0.55rem",zIndex:"800000"}} class="fa fs-6 px-1 eye-input fa-eye" aria-hidden="true"></i>
+        {show ? <i onClick={toggleShow} type='button' style={{position:"absolute",right:"1rem",top:"0.55rem",zIndex:"800000"}} className="fa fs-6 px-1 eye-input fa-eye-slash" aria-hidden="true"></i>:
+        <i onClick={toggleShow} type='button' style={{position:"absolute",right:"1rem",top:"0.55rem",zIndex:"800000"}} className="fa fs-6 px-1 eye-input fa-eye" aria-hidden="true"></i>
 }</>
         }
         </div>
