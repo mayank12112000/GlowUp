@@ -28,7 +28,7 @@ export default function RoleList() {
   }, []);
 
   const handleEdit = (roleSeq) => {
-    navigate(`/masters/role-master/${roleSeq}/edit`);
+    navigate(`/masters/role-master/edit/${roleSeq}`);
   };
 
   return (
