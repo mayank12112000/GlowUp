@@ -18,11 +18,14 @@ export const verifyJWT=asyncHandler(async(req,_,next)=>{
     
         const decodedTokenInfo = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
         //const SELECT_SINGLE_USER = "SELECT * FROM USERS WHERE USER_SEQ = ?"
-        const userSeq = await runQuery(SELECT_SINGLE_USER,[decodedTokenInfo?.userSeq])
-        if(!userSeq){
+        const resp = await runQuery(SELECT_SINGLE_USER,[decodedTokenInfo?.userSeq])
+        const {USER_SEQ:userSeq,ROLE_CODE:roleCode} = await resp[0]
+        console.log(userSeq,roleCode)
+        if(!resp){
             throw new ApiError(401,"Invalid access: User not found. Please re-login")
         }
-        req.userSeq = userSeq[0].USER_SEQ
+        req.userSeq = userSeq
+        req.currentRoleCode = roleCode
         next()
     
 })
