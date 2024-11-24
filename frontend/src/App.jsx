@@ -28,6 +28,10 @@ import ServicesMaster from './pages/masters page/ServicesMaster.jsx';
 import NoticationMaster from './pages/masters page/NoficationMaster.jsx';
 import MastersPage from './pages/masters page/MastersPage.jsx';
 import ProtectedAdminRoute from './utils/ProtectedAdminRoute.jsx';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from './utils/ProtectedRoute.jsx';
+import Footer from './components/Footer.jsx';
+
 function App() {
   const { theme } = useContext(ThemeContext);
   return (
@@ -50,7 +54,7 @@ function App() {
           <Route path='/orders' element={<Orders/>}/>  
           <Route path='/signup' element={<Signup/>}/>  
           <Route path='/login' element={<Login/>}/>  
-          <Route path='/my-profile' element={<Profile/>}/>  
+          <Route path='/my-profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>  
           <Route path='/clients' element={<Clients/>}/>  
           <Route path='/masters' element={<ProtectedAdminRoute><Masters/></ProtectedAdminRoute>}/>
           <Route path='/masters/role-master/*' element={<ProtectedAdminRoute><RoleMaster/></ProtectedAdminRoute>}/>
@@ -70,6 +74,8 @@ function App() {
         closeOnClick rtl={false} pauseOnFocusLoss={false} draggable pauseOnHover={false} theme={theme} transition= {Bounce}/> 
       </div>
       </div>
+      <Footer/>
+
     </div>
     </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeProvider";
 import Button from "../components/Button";
 import Input from "../components/Input";
@@ -11,6 +11,7 @@ export default function Signup() {
   const { theme } = useContext(ThemeContext);
   const [loading,setLoading] = useState(null)
   const [error,setError] = useState(null)
+  const navigate = useNavigate()
   const [formData,setFormData] = useState({ 
     userName: "",
     email: "",

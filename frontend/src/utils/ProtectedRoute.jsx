@@ -5,7 +5,7 @@ import { apiRequest } from './apiRequest';
 import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
 
-export default function ProtectedAdminRoute({ children }) {
+export default function ProtectedRoute({ children }) {
   const { roleCode, setRoleCode } = useContext(AuthContext);
   const [loading, setLoading] = useState(true); // Default to loading state
   const token = localStorage.getItem('accessToken');
@@ -20,19 +20,12 @@ export default function ProtectedAdminRoute({ children }) {
         const { data } = await apiRequest('/api/v1/user/currentRole', 'GET', null, token);
 
         if (!data) {
-          toast.warn('You are not authenticated', {
-            onClose: () => navigate('/'),
-            toastId: 'unauthenticated-admin-warning',
+          toast.warn('You are not authenticated',{
+            toastId: 'unauthenticated-warning',
           });
           return;
         }
 
-        if (data.roleCode !== 'ADM') {
-          toast.warn('Access denied. Admins only.', {
-            onClose: () => navigate('/login'),
-          });
-          return;
-        }
 
         setRoleCode(data.roleCode);
       } catch (error) {
@@ -53,7 +46,7 @@ export default function ProtectedAdminRoute({ children }) {
   }
 
   // If not an admin, navigate to login
-  if (roleCode !== 'ADM') {
+  if (!roleCode) {
     return <Navigate to="/login" />;
   }
 
