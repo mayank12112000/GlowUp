@@ -6,6 +6,10 @@ export const AuthContext = createContext()
 export default function AuthProvider({children}) {
     const [userSeq,setUserSeq] = useState(null)
     const [roleCode,setRoleCode] = useState(null)
+    const [email,setEmail] = useState(null)
+    const [mobile,setMobile] = useState(null)
+    const [name,setName] = useState(null)
+    const [isMobileVerified,setMobileVerified]= useState(null)
     const token= localStorage.getItem("accessToken")
     useEffect(()=>{
         const token = localStorage.getItem("accessToken")
@@ -13,7 +17,11 @@ export default function AuthProvider({children}) {
             const decoded = jwtDecode(token)
             if(decoded.exp * 1000 > Date.now()){
                 setUserSeq(decoded.userSeq)
+                setName(decoded.name)
                 setRoleCode(decoded.roleCode)
+                setEmail(decoded.email)
+                setMobile(decoded.mobile)
+                setMobileVerified(decoded.isMobileVerified ? true : false)
             }else{
                 localStorage.removeItem("accessToken")
                 setUserSeq(null)
@@ -32,7 +40,7 @@ export default function AuthProvider({children}) {
       }
     }
   return (
-    <AuthContext.Provider value={{userSeq,logout,roleCode,setRoleCode,setUserSeq}}>
+    <AuthContext.Provider value={{isMobileVerified,name,userSeq,email,mobile,logout,roleCode,setRoleCode,setUserSeq,isMobileVerified}}>
       {children}
     </AuthContext.Provider>
   )

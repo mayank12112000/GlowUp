@@ -5,6 +5,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { runQuery } from "../utils/runQuery.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
+import twilio from "twilio"
 
 const validateUser=asyncHandler(async(req,res,next)=>{
     const token= req.headers.authorization.replace("Bearer ","")
@@ -58,6 +59,7 @@ const loginUser=asyncHandler(async(req,res,next)=>{
     
         const users = await runQuery(SELECT_USER,[loginParam,loginParam,loginParam])
         const user = users[0]
+        console.log(user)
         if(!user){
             throw new ApiError(401,"Invalid User Name/ email/ mobile number")
         }
@@ -67,15 +69,13 @@ const loginUser=asyncHandler(async(req,res,next)=>{
         if(!isPasswordValid){
             throw new ApiError(401,"Invalid password")
         }
-        // const SELECT_USER_ROLE = 'SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
 
         const role_code = await runQuery(SELECT_USER_ROLE,[user.user_seq])
         const accessToken = jwt.sign(
-            {userSeq:user.user_seq, roleCode:role_code[0]?.ROLE_CODE},
+            {name:user.name,userSeq:user.user_seq, roleCode:role_code[0]?.ROLE_CODE,email:user.email,mobile:user.mobile,isMobileVerified:user.is_mobile_verified},
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn:process.env.ACCESS_TOKEN_EXPIRY}
         )
-    
         const refreshToken = jwt.sign(
             { userSeq: user.user_seq },
             process.env.REFRESH_TOKEN_SECRET,
@@ -104,7 +104,6 @@ const loginUser=asyncHandler(async(req,res,next)=>{
 
 const logoutUser = asyncHandler(async(req,res,next)=>{
     const userSeq = req.userSeq;
-    console.log(userSeq)
 //    SELECT_USER_BY_USER_SEQ = "SELECT * FROM USERS WHERE USER_SEQ = ?"
 
     const user = await runQuery(SELECT_USER_BY_USER_SEQ,[userSeq])
@@ -129,4 +128,33 @@ const currentUserRole = asyncHandler(async(req,res,next)=>{
     res.status(200).json(new ApiResponse(200,{roleCode:response.ROLE_CODE},"role code retrieved"))
 })
 
-export {registerUser,loginUser,validateUser,logoutUser,currentUserRole}
+const getOtp = asyncHandler(async (req,res,next)=>{
+    // TODO : after chosing what service to chose
+
+//     const {mobile} = req.body
+//     const { TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER } = process.env;
+//     const client = twilio(TWILIO_ACCOUNT_SID,TWILIO_AUTH_TOKEN)
+//     const otp = Math.floor(Math.random() * 900000 +100000 )
+// console.log(mobile.toString().length)
+//     if(!mobile || mobile.toString().length !== 13){
+//         throw new ApiError(401,"mobile number is empty or not valid ")
+//     }
+//     client.messages
+//     .create({
+//         body: `Your otp to verify your number to Glow up is ${otp}`,
+//         from: TWILIO_PHONE_NUMBER,
+//         to:mobile
+//     })
+//     .then(()=>{
+//         res.status(200).json(new ApiResponse(200,{},"otp sent successfully"))
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
+        throw new ApiError(500,"unable to send otp")
+})
+
+const verifyOtp = asyncHandler(async(req,res,next)=>{
+
+})
+export {verifyOtp,getOtp,registerUser,loginUser,validateUser,logoutUser,currentUserRole}

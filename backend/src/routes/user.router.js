@@ -1,5 +1,5 @@
 import {Router} from "express";
-import { currentUserRole, loginUser, logoutUser, registerUser, validateUser } from "../controllers/user.controller.js";
+import { currentUserRole, getOtp, loginUser, logoutUser, registerUser, validateUser, verifyOtp } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router()
@@ -9,4 +9,6 @@ router.route("/login").post(loginUser)
 router.route("/validate").get(validateUser)
 router.route("/currentRole").get(verifyJWT,currentUserRole)
 router.route("/logout").post(verifyJWT,logoutUser)
+router.route("/verifyOtp").post(verifyJWT,verifyOtp)
+router.route("/getMobileOtp").post(verifyJWT,getOtp)
 export default router

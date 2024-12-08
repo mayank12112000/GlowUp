@@ -1,0 +1,31 @@
+/* Profile.css */
+.profile-container {
+    height: 100vh;
+    background-color: #f8f9fa; /* Light background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profile-card {
+    max-width: 400px;
+    border-radius: 15px;
+    background-color: #ffffff; /* White card */
+  }
+  
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #007bff; /* Bootstrap primary color */
+  }
+  
+  .profile-details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  
+  .profile-details strong {
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
