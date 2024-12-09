@@ -10,7 +10,7 @@ import Wishlist from './pages/Wishlist';
 import Calender from './pages/Calender';
 import Orders from './pages/Orders';
 import NotFound from './pages/NotFound';
-import Homepage from './pages/Homepage';
+import Homepage from './pages/Homepage/Homepage.jsx';
 import { ThemeContext } from './context/ThemeProvider';
 import { useContext } from 'react';
 import Navbar from './components/Navbar';

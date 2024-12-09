@@ -35,11 +35,8 @@ export const arcjectValidate = asyncHandler(async (req,_,next) => {
   
   if (decision.isDenied()) {
     // res.writeHead(403, { "Content-Type": "application/json" });
-    console.log(decision.reason)
     // res.end(JSON.stringify({ error: "Forbidden" }));
     throw new ApiError(403,message)
-
-
   } 
   next()
 });

@@ -1,0 +1,150 @@
+
+  
+  /* Grid Container for Desktop */
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      "item-1 item-2"
+      "item-1 item-3";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 85vh; /* Full viewport height */
+    .img{
+        border-radius: 10px;
+    }
+  }
+  
+  /* Grid Items */
+  .grid-item {
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .item-1 {
+    grid-area: item-1;
+  }
+  
+  .item-2 {
+    grid-area: item-2;
+  }
+  
+  .item-3 {
+    grid-area: item-3;
+  }
+  
+  /* Image Styling */
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .grid-container {
+        height: 27vh;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+    }
+  
+    .grid-item {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      height: 25vh;
+    }
+  
+    .grid-item img {
+      height: 100%;
+    }
+  }
+  
+  /* service */
+  /* Tabs Container */
+.tabs-container {
+  max-width: 100%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  position: relative;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab {
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.tab.active {
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  border-radius: 5rem;
+}
+
+.tab:hover {
+  background-color: #fcb69f;
+  color: black;
+  border-radius: 5rem;
+}
+
+/* Active Tab Indicator */
+.indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: transform 0.1s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Tab Content */
+.tab-content {
+  margin-top: 20px;
+}
+
+.tab-pane {
+  display: none;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabs {
+    font-size: 14px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    padding: 10px;
+    flex: 0 0 auto;
+  }
+}
