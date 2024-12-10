@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function BranchMaster() {
+export default function BranchDetails() {
   return (
     <div>
-      branch master
+      branch details
     </div>
   )
 }

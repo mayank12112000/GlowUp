@@ -22,7 +22,7 @@ import Masters from './pages/Masters.jsx';
 import RoleMaster from './pages/masters page/Role Master/RoleMaster.jsx';
 import ProductMaster from './pages/masters page/ProductMaster.jsx';
 import ProductTypeMaster from './pages/masters page/ProductTypeMaster.jsx';
-import BranchMaster from './pages/masters page/BranchMaster.jsx';
+import BranchMaster from './pages/masters page/Branch Master/BranchMaster.jsx';
 import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster.jsx';
 import ServicesMaster from './pages/masters page/ServicesMaster.jsx';
 import NoticationMaster from './pages/masters page/NoficationMaster.jsx';
@@ -31,6 +31,7 @@ import ProtectedAdminRoute from './utils/ProtectedAdminRoute.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './utils/ProtectedRoute.jsx';
 import Footer from './components/Footer.jsx';
+import ServicesTypeMaster from './pages/masters page/ServicesTypeMaster.jsx';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -61,9 +62,10 @@ function App() {
           <Route path='/masters/notificaiton-master' element={<NoticationMaster/>}/>
           <Route path='/masters/product-master' element={<ProductMaster/>}/>
           <Route path='/masters/product-type-master' element={<ProductTypeMaster/>}/>
-          <Route path='/masters/branch-master' element={<BranchMaster/>}/>
+          <Route path='/masters/branch-master/*' element={<ProtectedAdminRoute><BranchMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/discount-promo-master' element={<DiscountPromoMaster/>}/>
           <Route path='/masters/sercices-master' element={<ServicesMaster/>}/>
+          <Route path='/masters/sercices-type-master' element={<ServicesTypeMaster/>}/>
           <Route path='/masters/notification-master' element={<NoticationMaster/>}/>
           <Route path='/masters/:type' element={<MastersPage/>}/>
 

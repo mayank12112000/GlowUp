@@ -8,6 +8,8 @@ import AddRole from './AddRole';
 
 export default function RoleMaster() {
   const param = useParams()
+  console.log("role master param",param)
+  
   return (
     <div className='shadow page'>
       <div className="heading m-2 d-flex justify-content-around align-items-center">

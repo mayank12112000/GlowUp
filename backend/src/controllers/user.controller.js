@@ -59,7 +59,6 @@ const loginUser=asyncHandler(async(req,res,next)=>{
     
         const users = await runQuery(SELECT_USER,[loginParam,loginParam,loginParam])
         const user = users[0]
-        console.log(user)
         if(!user){
             throw new ApiError(401,"Invalid User Name/ email/ mobile number")
         }
