@@ -15,11 +15,7 @@ export default function Alert({ success = false, message = "Something went wrong
   if (!isVisible) return null;
 
   return (
-    <div
-      style={{ height: "4rem" }}
-      className={`alert alert-${success ? "success" : "warning"} alert-dismissible fade show`}
-      role="alert"
-    >
+    <div style={{ height: "4rem" }} className={`alert alert-${success ? "success" : "warning"} alert-dismissible fade show`} role="alert">
       {message}
       <button type="button" className="btn-close" onClick={handleClose} aria-label="Close"></button>
     </div>

@@ -20,12 +20,14 @@ app.use(express.static("public")) // for public static asset
 import roleRouter from './routes/role.router.js';
 import userRouter from './routes/user.router.js';
 import branchRouter from './routes/branch.router.js';
+import serviceTypeRouter from './routes/serviceType.router.js';
 import { ApiError } from './utils/ApiError.js';
 
 // routes declaration
 app.use("/api/v1/user",userRouter)
 app.use("/api/v1/role",roleRouter)
 app.use("/api/v1/branch",branchRouter)
+app.use("/api/v1/serviceType",serviceTypeRouter)
 
 
 app.use(cookieParser())

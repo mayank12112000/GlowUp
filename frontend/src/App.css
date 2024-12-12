@@ -177,3 +177,7 @@ p {
 .eye-input{
   cursor: pointer;
 }
+
+.error-text{
+  text-align: center;
+}
