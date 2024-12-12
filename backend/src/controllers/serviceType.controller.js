@@ -15,10 +15,10 @@ export const getAllServiceTypes= asyncHandler(async(req,res,next)=>{
 })
 
 export const addServiceType = asyncHandler(async(req,res,next)=>{
-    const {serviceTypeName} = req.body
+    const {serviceTypeName,isActive} = req.body
     
     if(!serviceTypeName){
-        throw new ApiError(401,"Service type name is mandatory")
+        throw new ApiError(401,"All fields are mandatory")
     }
     if(req.currentRoleCode !== "ADM"){
         throw new ApiError(403,"You are not authorized to create roles")
@@ -29,7 +29,7 @@ export const addServiceType = asyncHandler(async(req,res,next)=>{
     }
 //export const ADD_SERVICE_TYPE = "INSERT INTO SERVICE_TYPE_MASTER (SERVICE_TYPE_NAME,CREATED_BY,CREATED_ON,UPDATED_ON) VALUES(?,?,?,?)"
 
-    const resp = await runQuery(ADD_SERVICE_TYPE,[serviceTypeName,req.userSeq])
+    const resp = await runQuery(ADD_SERVICE_TYPE,[serviceTypeName,isActive,req.userSeq])
     if(!resp){
     throw new ApiError(503,"Internal server error, please try again")
     }

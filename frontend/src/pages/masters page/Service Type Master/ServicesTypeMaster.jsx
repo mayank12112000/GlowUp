@@ -7,7 +7,6 @@ import ServiceTypeEdit from './ServiceTypeEdit';
 import ServiceTypeDetails from './ServiceTypeDetails';
 export default function ServicesTypeMaster() {
   const param = useParams()
-  console.log("role master param",param)
 
   return (
     <div className='shadow page'>

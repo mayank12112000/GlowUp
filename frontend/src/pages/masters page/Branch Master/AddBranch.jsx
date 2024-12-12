@@ -26,8 +26,6 @@ export default function AddBranch() {
     await runQuery()
   }
   useEffect(()=>{
-    console.log(message)
-    console.log(error)
     if(error){
       toast.warn(error)
     }

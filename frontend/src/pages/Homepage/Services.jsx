@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useQuery from "../../utils/useQuery";
 
-const Tabs = () => {
+const Services = () => {
   const [activeTab, setActiveTab] = useState(0);
-
+  const [loading, error, serviceType, runQuery, success, message] =
+    useQuery("/api/v1/serviceType/getServiceType", "GET", null);
+useEffect( ()=>{
+runQuery()
+},[])
   const tabs = [
     "Limited Time Offers",
     "Hair Styling & Cut",
@@ -25,9 +30,9 @@ const Tabs = () => {
     <div className="tabs-container">
         <h1>Services</h1>
       <div className="tabs">
-        {tabs.map((tab, index) => (
-          <button key={index} className={`tab me-2 mb-2 ${activeTab === index ? "active" : ""}`} onClick={() => setActiveTab(index)}>
-            {tab}
+        {serviceType?.map((service) => (
+          <button key={service.service_type_seq} className={`tab me-2 mb-2 ${activeTab === service.service_type_seq ? "active" : ""}`} onClick={() => setActiveTab(service.service_type_seq)}>
+            {service.service_type_name}
           </button>
         ))}
       </div>
@@ -43,4 +48,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default Services;

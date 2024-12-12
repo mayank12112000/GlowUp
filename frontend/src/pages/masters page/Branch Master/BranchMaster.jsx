@@ -10,8 +10,6 @@ import Button from '../../../components/Button';
 
 export default function BranchMaster() {
   const param = useParams()
-  
-console.log("branch master param",param)
   return (
     <div className='shadow page'>
       <div className="heading m-2 d-flex justify-content-around align-items-center">

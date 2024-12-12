@@ -9,7 +9,6 @@ export default function BranchList() {
     const [loading, error, data, runQuery] = useQuery("/api/v1/branch/getBranches", "GET", null);
     const {theme} = useContext(ThemeContext)
     const navigate = useNavigate()
-    console.log(data)
 
   useEffect(() => {
     runQuery();

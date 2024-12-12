@@ -6,13 +6,13 @@ export default function useQuery(query,method,body) {
     const [error,setError] = useState(null)
     const [data,setData] = useState(null)
     const [success,setSuccess] = useState(null)
-    const [errorMessage,setErrorMessage] = useState(null)
+    const [message,setMessage] = useState(null)
     const token = localStorage.getItem("accessToken");
 
     // const response = await apiRequest("/api/v1/role/getRoles", "GET", null, token);
     const queryFunction = async()=>{
         setLoading(true)
-        setErrorMessage(null)
+        setMessage(null)
         setError(null)
         setSuccess(null)
         const response = await apiRequest(query,method,body,token)
@@ -21,13 +21,13 @@ export default function useQuery(query,method,body) {
             setLoading(false)
             setError(null)
             setData(response.data)
-            setErrorMessage(response.message)
+            setMessage(response.message)
         }else{
             setError(response.message)
             setLoading(false)
-            setErrorMessage(response.message)
+            setMessage(response.message)
         }
     }
     
-  return [loading,error,data,queryFunction,success,errorMessage]
+  return [loading,error,data,queryFunction,success,message]
 }
