@@ -39,8 +39,10 @@ export default function Login() {
       setUserSeq(response.data.userSeq)
       setRoleCode(response.data.roleCode)
       toast.success("Login successful",{
-        onClose:()=>navigate("/"),
-        onOpen:()=> setLoggedIn(true)
+        onOpen:()=> {
+          setLoggedIn(true);
+          navigate("/")
+        }
       })
     }
     setLoading(false)

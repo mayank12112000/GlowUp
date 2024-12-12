@@ -20,18 +20,18 @@ import { Bounce, ToastContainer } from 'react-toastify';
 import Clients from './pages/Clients';
 import Masters from './pages/Masters.jsx';
 import RoleMaster from './pages/masters page/Role Master/RoleMaster.jsx';
-import ProductMaster from './pages/masters page/ProductMaster.jsx';
-import ProductTypeMaster from './pages/masters page/ProductTypeMaster.jsx';
-import BranchMaster from './pages/masters page/Branch Master/BranchMaster.jsx';
-import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster.jsx';
-import ServicesMaster from './pages/masters page/ServicesMaster.jsx';
-import NoticationMaster from './pages/masters page/NoficationMaster.jsx';
 import MastersPage from './pages/masters page/MastersPage.jsx';
 import ProtectedAdminRoute from './utils/ProtectedAdminRoute.jsx';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './utils/ProtectedRoute.jsx';
 import Footer from './components/Footer.jsx';
-import ServicesTypeMaster from './pages/masters page/ServicesTypeMaster.jsx';
+import ProductMaster from './pages/masters page/Product Master/ProductMaster';
+import ProductTypeMaster from './pages/masters page/Product Type Master/ProductTypeMaster';
+import BranchMaster from './pages/masters page/Branch Master/BranchMaster';
+import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster/DiscountPromoMaster';
+import ServicesMaster from './pages/masters page/Service Master/ServicesMaster';
+import ServicesTypeMaster from './pages/masters page/Service Type Master/ServicesTypeMaster';
+import NotificationMaster from './pages/masters page/Notification Master/NotificationMaster.jsx';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -59,15 +59,14 @@ function App() {
           <Route path='/clients' element={<Clients/>}/>  
           <Route path='/masters' element={<ProtectedAdminRoute><Masters/></ProtectedAdminRoute>}/>
           <Route path='/masters/role-master/*' element={<ProtectedAdminRoute><RoleMaster/></ProtectedAdminRoute>}/>
-          <Route path='/masters/notificaiton-master' element={<NoticationMaster/>}/>
-          <Route path='/masters/product-master' element={<ProductMaster/>}/>
-          <Route path='/masters/product-type-master' element={<ProductTypeMaster/>}/>
           <Route path='/masters/branch-master/*' element={<ProtectedAdminRoute><BranchMaster/></ProtectedAdminRoute>}/>
-          <Route path='/masters/discount-promo-master' element={<DiscountPromoMaster/>}/>
-          <Route path='/masters/sercices-master' element={<ServicesMaster/>}/>
-          <Route path='/masters/sercices-type-master' element={<ServicesTypeMaster/>}/>
-          <Route path='/masters/notification-master' element={<NoticationMaster/>}/>
-          <Route path='/masters/:type' element={<MastersPage/>}/>
+          <Route path='/masters/services-type-master/*' element={<ProtectedAdminRoute><ServicesTypeMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/service-master/*' element={<ProtectedAdminRoute><ServicesMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/notificaiton-master/*' element={<ProtectedAdminRoute><NotificationMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/product-master/*' element={<ProtectedAdminRoute><ProductMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/product-type-master/*' element={<ProtectedAdminRoute><ProductTypeMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/discount-promo-master/*' element={<ProtectedAdminRoute><DiscountPromoMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/:type' element={<ProtectedAdminRoute><MastersPage/></ProtectedAdminRoute>}/>
 
           <Route path='*' element={<NotFound/>}/>  
         </Routes> 

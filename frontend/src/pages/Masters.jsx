@@ -11,8 +11,8 @@ export default function Masters() {
         <MasterCard text="Product Type Master" link='product-type-master'/>
         <MasterCard text="Branach Master" link='branch-master'/>
         <MasterCard text="Discount Promo Master" link='discount-promo-master'/>
-        <MasterCard text="Services Master" link='sercices-master'/>
-        <MasterCard text="Services Type Master" link='sercices-type-master'/>
+        <MasterCard text="Services Master" link='services-master'/>
+        <MasterCard text="Services Type Master" link='services-type-master'/>
         <MasterCard text="Notification Master" link='notification-master'/>
     </div>
   )

@@ -40,7 +40,7 @@ export default function AuthProvider({children}) {
       }
     }
   return (
-    <AuthContext.Provider value={{isMobileVerified,name,userSeq,email,mobile,logout,roleCode,setRoleCode,setUserSeq,isMobileVerified}}>
+    <AuthContext.Provider value={{isMobileVerified,name,userSeq,email,mobile,logout,roleCode,setRoleCode,setUserSeq}}>
       {children}
     </AuthContext.Provider>
   )

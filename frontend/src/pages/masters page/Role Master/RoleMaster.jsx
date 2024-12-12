@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Link, Route, Routes, useParams } from 'react-router-dom'
 import RoleList from './RoleList';
 import RoleEdit from './RoleEdit';
 import RoleDetails from './RoleDetails';
