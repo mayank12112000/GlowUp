@@ -37,8 +37,9 @@ export default function ServicesList() {
             <thead>
               <tr>
                 <th scope="col">Service </th>
-                <th scope="col">Price</th>
-                <th scope="col">Discount %</th>
+                <th className="text-center" scope="col">Price</th>
+                <th className="text-center" scope="col">Discount %</th>
+                <th className="text-center" scope="col">Time(hours:min)</th>
                 <th scope="col">Service Type</th>
                 <th scope="col">Created By</th>
                 <th scope="col" className="text-center">
@@ -51,8 +52,9 @@ export default function ServicesList() {
                 return (
                   <tr key={service.service_seq}>
                     <td className="text-truncate"> {service.service_name}</td>
-                    <td>{service.price}</td>
-                    <td>{service.discount_percent}</td>
+                    <td className="text-center">{service.price}</td>
+                    <td className="text-center">{service.discount_percent}</td>
+                    <td className="text-center">{`${service.hours}:${service.minutes}`}</td>
                     <td>{service.service_type_name}</td>
                     <td>{service.created_by}</td>
                     <td onClick={() => handleEdit(service.service_seq)} className="edit-master text-center">
@@ -65,7 +67,6 @@ export default function ServicesList() {
           </table>
         </div>
       ):
-      // { success = false, message = "Something went wrong, please try again", onClose }
       <Alert message="No data found"/>}
     </>
   );

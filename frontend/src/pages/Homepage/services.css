@@ -1,0 +1,23 @@
+.homepage-service-block {
+    border-radius: 0.8rem;
+    border: 1px gray solid;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.homepage-service-block:hover {
+    box-shadow:0cap ;
+}
+.service-content{
+    .name{
+        font-size: 1rem;
+    }
+    .time{
+        font-size: 0.8rem;
+    }
+    .price{
+        font-size: 0.8rem;
+        .text-success{
+            font-weight: 800;
+        }
+    }
+}

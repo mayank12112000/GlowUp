@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import useQuery from '../../../utils/useQuery.jsx'
 export default function AddService() {
   const token = localStorage.getItem("accessToken")
-  const [formData,setFormData] = useState({serviceName:"",isActive:true,serviceType:"",mrpPrice:0,discount:0})
+  const [formData,setFormData] = useState({serviceName:"",isActive:true,serviceType:"",mrpPrice:0,discount:0,hours:"",minutes:"",seconds:""})
   console.log(formData)
   const [loading,error,data,runQuery,success,message] = useQuery("/api/v1/services","POST",formData)
   const [stLoading, stError, serviceTypes, stRunQuery, stSuccess, stMessage] =useQuery("/api/v1/serviceType/getServiceType", "GET", null);
@@ -67,6 +67,12 @@ export default function AddService() {
             </div>
        </div>
       <div className="row my-3">
+        <div className="col-sm-3">
+      <Input min={0} max={12} type="number" name="hours" label="Time hours" onChange={handleOnChange} value={formData.hours} className="form-control" required/>
+        </div>
+        <div className="col-sm-3">
+      <Input min={0} max={59} type="number" name="minutes" label="Time minutes" onChange={handleOnChange} value={formData.minutes} className="form-control" required/>
+        </div>
         <div className="col-sm-6">
           <Radio required={true} name="isActive" onChange={handleOnChange} checked={formData.isActive} value={true}  label={"Is Active"}/>
         </div>

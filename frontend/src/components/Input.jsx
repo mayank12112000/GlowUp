@@ -9,7 +9,7 @@ export default function Input({label,type,required=false,autoComplete,...props})
     <div className="mb-3" >
         <label htmlFor="basic-url" className="form-label">{label}{required && <span className="required-asterisk">*</span>}</label>
         <div className="input-group">
-        <input  {...props} required={required} type={type!="password"?type:show?"text":"password"} className="shadow-sm form-control" aria-describedby="basic-addon3 basic-addon4"/>
+        <input {...props} required={required} type={type!="password"?type:show?"text":"password"} className="shadow-sm form-control" aria-describedby="basic-addon3 basic-addon4"/>
         {type=="password" && 
         <>
         {show ? <i onClick={toggleShow} type='button' style={{position:"absolute",right:"1rem",top:"0.55rem",zIndex:"800000"}} className="fa fs-6 px-1 eye-input fa-eye-slash" aria-hidden="true"></i>:
