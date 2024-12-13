@@ -10,10 +10,7 @@ import useQuery from '../../../utils/useQuery.jsx'
 export default function AddServiceType() {
   const token = localStorage.getItem("accessToken")
   const [formData,setFormData] = useState({serviceTypeName:"",isActive:false})
-  console.log(formData)
   const [loading,error,data,runQuery,success,message] = useQuery("/api/v1/serviceType","POST",formData)
-  console.log(success)
-  console.log(message)
   const navigate = useNavigate()
   const handleOnChange =(e)=>{
     const {name,value,checked,type} = e.target
@@ -33,7 +30,6 @@ export default function AddServiceType() {
       toast.warn(message)
     }
     if(success){
-      console.log("success block")
       toast.success(message,{
         onClose:()=>navigate("/masters/services-type-master")
       })

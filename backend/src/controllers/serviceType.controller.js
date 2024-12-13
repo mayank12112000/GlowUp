@@ -6,7 +6,6 @@ import { runQuery } from "../utils/runQuery.js";
 
 export const getAllServiceTypes= asyncHandler(async(req,res,next)=>{
     const roles = await runQuery(SELECT_SERVICE_TYPE,["%%"])
-    console.log(roles)
     res
     .status(200)
     .json(

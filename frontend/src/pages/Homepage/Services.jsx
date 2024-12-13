@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
 import useQuery from "../../utils/useQuery";
+import Spinner from "../../components/Spinner";
+import Alert from "../../components/Alert";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const [loading, error, serviceType, runQuery, success, message] =
-    useQuery("/api/v1/serviceType/getServiceType", "GET", null);
-useEffect( ()=>{
-runQuery()
-},[])
-  const tabs = [
-    "Limited Time Offers",
-    "Hair Styling & Cut",
-    "Hair Color",
-    "Hair Treatments",
-    "Nails",
-    "Threading & Waxing",
-  ];
+  const [loading, error, serviceType, runQuery, success, message] = useQuery("/api/v1/serviceType/getServiceType","GET",null);
+
+  useEffect(() => {
+    runQuery();
+  }, []);
 
   const tabContent = [
     "Content for Limited Time Offers",
@@ -28,14 +22,15 @@ runQuery()
 
   return (
     <div className="tabs-container">
-        <h1>Services</h1>
-      <div className="tabs">
+      <h1>Services</h1>
+      {loading ? <Spinner/> : !error ? <div className="tabs">
         {serviceType?.map((service) => (
-          <button key={service.service_type_seq} className={`tab me-2 mb-2 ${activeTab === service.service_type_seq ? "active" : ""}`} onClick={() => setActiveTab(service.service_type_seq)}>
+          <button key={service.service_type_seq} className={`tab me-2 mb-2 ${activeTab === service.service_type_seq ? "active" : ""}`} 
+          onClick={() => setActiveTab(service.service_type_seq)}>
             {service.service_type_name}
           </button>
         ))}
-      </div>
+      </div>:<Alert/>}
 
       <div className="tab-content">
         {tabContent.map((content, index) => (
