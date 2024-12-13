@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ServicesMaster() {
+export default function ServiceEdit() {
   return (
     <div>
-      services
+      service  edit
     </div>
   )
 }

@@ -29,7 +29,7 @@ import ProductMaster from './pages/masters page/Product Master/ProductMaster';
 import ProductTypeMaster from './pages/masters page/Product Type Master/ProductTypeMaster';
 import BranchMaster from './pages/masters page/Branch Master/BranchMaster';
 import DiscountPromoMaster from './pages/masters page/DiscountPromoMaster/DiscountPromoMaster';
-import ServicesMaster from './pages/masters page/Service Master/ServicesMaster';
+import ServicesMaster from './pages/masters page/Services Master/ServicesMaster.jsx';
 import ServicesTypeMaster from './pages/masters page/Service Type Master/ServicesTypeMaster';
 import NotificationMaster from './pages/masters page/Notification Master/NotificationMaster.jsx';
 
@@ -61,7 +61,7 @@ function App() {
           <Route path='/masters/role-master/*' element={<ProtectedAdminRoute><RoleMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/branch-master/*' element={<ProtectedAdminRoute><BranchMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/services-type-master/*' element={<ProtectedAdminRoute><ServicesTypeMaster/></ProtectedAdminRoute>}/>
-          <Route path='/masters/service-master/*' element={<ProtectedAdminRoute><ServicesMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/services-master/*' element={<ProtectedAdminRoute><ServicesMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/notificaiton-master/*' element={<ProtectedAdminRoute><NotificationMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/product-master/*' element={<ProtectedAdminRoute><ProductMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/product-type-master/*' element={<ProtectedAdminRoute><ProductTypeMaster/></ProtectedAdminRoute>}/>

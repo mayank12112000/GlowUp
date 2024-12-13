@@ -1,4 +1,4 @@
-import { ADD_BRANCH, ADD_SERVICE_TYPE, SELECT_BRANCH, SELECT_BRANCHES, SELECT_SERVICE_TYPE } from "../queries/queries.js";
+import { ADD_SERVICE_TYPE,SELECT_SERVICE_TYPE } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";

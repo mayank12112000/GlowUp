@@ -18,7 +18,7 @@ export default function Navbar() {
       const resp = await logout()
       if(resp){
         toast.success("Logged out successfully",{
-          onClose:()=>navigate("/"),
+          onOpen:()=>navigate("/"),
         })
       }
     }

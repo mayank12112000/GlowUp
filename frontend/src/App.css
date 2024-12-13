@@ -181,3 +181,11 @@ p {
 .error-text{
   text-align: center;
 }
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+table td.text-truncate {
+  max-width: 7rem; /* or any other width you prefer */
+}
