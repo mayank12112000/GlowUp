@@ -33,6 +33,7 @@ import ServicesMaster from './pages/masters page/Services Master/ServicesMaster.
 import ServicesTypeMaster from './pages/masters page/Service Type Master/ServicesTypeMaster';
 import NotificationMaster from './pages/masters page/Notification Master/NotificationMaster.jsx';
 import EmployeeMaster from './pages/masters page/Employee Master/EmployeeMaster.jsx';
+import SubRoleMaster from './pages/masters page/Sub Role Master/SubRoleMaster.jsx';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -61,6 +62,7 @@ function App() {
           <Route path='/masters' element={<ProtectedAdminRoute><Masters/></ProtectedAdminRoute>}/>
           <Route path='/masters/employee-master/*' element={<ProtectedAdminRoute><EmployeeMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/role-master/*' element={<ProtectedAdminRoute><RoleMaster/></ProtectedAdminRoute>}/>
+          <Route path='/masters/sub-role-master/*' element={<ProtectedAdminRoute><SubRoleMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/branch-master/*' element={<ProtectedAdminRoute><BranchMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/services-type-master/*' element={<ProtectedAdminRoute><ServicesTypeMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/services-master/*' element={<ProtectedAdminRoute><ServicesMaster/></ProtectedAdminRoute>}/>

@@ -9,6 +9,7 @@ export default function Masters() {
    <div className="row row-cols-lg-5 row-cols-md-4 row-cols-sm-3 d-flex justify-content-around">
         <MasterCard text="Employee Master" link='employee-master'/>
         <MasterCard text="Role Master" link='role-master'/>
+        <MasterCard text="Sub Role Master" link='sub-role-master'/>
         <MasterCard text="Notifcation Master" link='notification-master'/>
         <MasterCard text="Product Master" link='product-master'/>
         <MasterCard text="Product Type Master" link='product-type-master'/>
