@@ -6,6 +6,6 @@ import { arcjectValidate } from "../middlewares/arcjet.middleware.js";
 const router = Router()
 
 router.route("/registerEmployee").post(verifyJWT,arcjectValidate,registerEmployee)
-router.route("/").get(verifyJWT,getAllEmployee)
+router.route("/").get(getAllEmployee)
 
 export default router
