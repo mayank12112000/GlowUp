@@ -44,9 +44,9 @@ console.log(empUserSeq)
 })
 
 export const getAllEmployee = asyncHandler(async(req,res,next)=>{
-    const {q} = req.query
-    console.log(q.length>0?true:false)
-    const employee = await runQuery(SELECT_EMPLOYEE + (q.length>0?" WHERE B.ISACTIVE = true":""))
+    const {active} = req.query
+    console.log(active=="false")
+    const employee = await runQuery(SELECT_EMPLOYEE + (active==="true"?" WHERE B.ISACTIVE = TRUE":active==="false"?" WHERE B.ISACTIVE = FALSE":""))
     console.log(employee)
     if(!employee){
         throw new ApiError(503,"employee retrieval failed")
