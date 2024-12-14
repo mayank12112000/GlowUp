@@ -199,3 +199,15 @@ a.sidebar-link:hover {
 .sidebar-light{
     background-color: #fcb69f !important; /* Light Coral */
 }
+
+
+.tooltip {
+    background-color: #0d6efd !important; /* Tooltip background */
+    color: #fff !important; /* White text */
+    font-size: 0.9rem;
+    border-radius: 0.3rem;
+  }
+  
+  .tooltip .tooltip-arrow {
+    color: #0d6efd !important; /* Tooltip arrow color */
+  }

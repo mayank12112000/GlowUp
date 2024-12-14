@@ -5,6 +5,7 @@ import Alert from "../../components/Alert";
 import "./services.css"
 import Button from './../../components/Button';
 import { ThemeContext } from "../../context/ThemeProvider";
+import Skeleton from "../../components/Skeleton";
 const Services = () => {
   const { theme } = useContext(ThemeContext);
   const [currentServiceTypeSeq,setCurrentServiceTypeSeq] = useState(1)
@@ -33,7 +34,7 @@ console.log(service)
       <div className="tab-content mx-2 row d-flex flex-column">
         <div className="row mb-4 col-sm-6 p-0">
           {!sLoading && service?.length===0 && <p>no service available</p>}
-        {sLoading ? <Spinner/> : service && service?.map((service) => (
+        {sLoading ? <Skeleton number={2} className="mt-3 p-3 homepage-service-block"/> : service && service?.map((service) => (
           <div className="mt-3 p-3 homepage-service-block d-flex align-items-center justify-content-between" key={service.service_seq}>
             <div className="service-content py-2">
             <p className="name m-0">{service.service_name}</p>
@@ -42,7 +43,7 @@ console.log(service)
                 <span className="mx-3 text-success">Save {Math.ceil(service.price * (service.discount_percent/100))}</span> 
               }
             </p>
-            <p className="time text-muted m-0">{`${service.hours} hours : ${service.minutes} minutes`}</p>
+            <p className="time text-muted m-0">{`${service.hours} hour:${service.minutes} minute`}</p>
             </div>
           <Button text="Book"/>
           </div>
