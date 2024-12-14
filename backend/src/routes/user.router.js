@@ -1,11 +1,12 @@
 import {Router} from "express";
-import { currentUserRole, getOtp, loginUser, logoutUser, registerUser, validateUser, verifyOtp } from "../controllers/user.controller.js";
+import { currentUserRole, getOtp, loginUser, logoutUser, registerEmployee, registerUser, validateUser, verifyOtp } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 import { arcjectValidate } from "../middlewares/arcjet.middleware.js";
 
 const router = Router()
 
 router.route("/register").post(arcjectValidate,registerUser)
+router.route("/registerEmployee").post(verifyJWT,arcjectValidate,registerEmployee)
 router.route("/login").post(loginUser)
 router.route("/validate").get(validateUser)
 router.route("/currentRole").get(verifyJWT,currentUserRole)

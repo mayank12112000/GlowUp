@@ -11,8 +11,8 @@ export default function EmployeeMaster() {
   return (
     <div className='shadow page'>
           <div className="heading m-2 d-flex justify-content-around align-items-center">
-          <h2 className="text-center">Role Master</h2>
-         {(param['*'] =="") && <Link to="/masters/role-master/add-role">
+          <h2 className="text-center">Employee Master</h2>
+         {(param['*'] =="") && <Link to="/masters/employee-master/add-employee">
            <Button text="Add Employee" variant="secondary" />
           </Link>}
           </div>

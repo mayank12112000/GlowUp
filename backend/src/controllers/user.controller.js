@@ -1,4 +1,4 @@
-import { CREATE_USER, GET_CURRENT_USER_ROLE, INSERT_TOKENS, REMOVE_TOKENS, SELECT_TOKEN, SELECT_USER, SELECT_USER_BY_USER_SEQ, SELECT_USER_ROLE, UDPATE_TOKENS } from "../queries/queries.js";
+import { CREATE_EMPLOYEE, CREATE_USER, GET_CURRENT_USER_ROLE, INSERT_TOKENS, REMOVE_TOKENS, SELECT_EMP_ROLE_SEQ, SELECT_TOKEN, SELECT_USER, SELECT_USER_BY_USER_SEQ, SELECT_USER_ROLE, SELECT_USER_SEQ, UDPATE_TOKENS } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
 import twilio from "twilio"
 
-const validateUser=asyncHandler(async(req,res,next)=>{
+export const validateUser=asyncHandler(async(req,res,next)=>{
     const token= req.headers.authorization.replace("Bearer ","")
     if(!token){
         return res.status(401).json({isValid:false})
@@ -24,8 +24,45 @@ const validateUser=asyncHandler(async(req,res,next)=>{
     }
 })
 
-const registerUser = asyncHandler(async (req,res)=>{
-    const {name,mobile,roleSeq,userName,email,password} = req.body
+export const registerEmployee = asyncHandler(async (req,res)=>{
+    const {name,mobile,userName,email,isActive} = req.body
+    const password = "glowup2024"
+    if(req.currentRoleCode!=="ADM"){
+        throw new ApiError(401,"You are not authorised to create employee")
+    }
+    if ([name, mobile, password, userName, email].some(field => !field)) {
+        throw new ApiError(400, "All fields are required");
+    }
+    if(password.length<8){
+        throw new ApiError(400,"Password must have atlease 8 characters")
+    }
+    // check if users already exits
+    const user = await runQuery(SELECT_USER,[userName,email,mobile])
+    if(user?.length > 0){
+        throw new ApiError(401,"User name/ email id/ mobile number already exists")
+    }
+    // hash the password
+    const hashedPassword = await bcrypt.hash(password,10)
+    const role = await runQuery(SELECT_EMP_ROLE_SEQ)
+    const {roleSeq} = await role[0]
+    console.log(roleSeq)
+    // insert into users table
+    console.log(email,hashedPassword,name,mobile,roleSeq,isActive)
+    await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq,isActive])
+
+    //export const SELECT_USER_SEQ = "SELECT USER_SEQ FROM USERS WHERE USERNAME= ?"
+    const empUser = await runQuery(SELECT_USER_SEQ,[userName])
+    const {empUserSeq} = await empUser[0]
+console.log(empUserSeq)
+//export const CREATE_EMPLOYEE = "INSERT INTO EMPLOYEE_MASTER (NAME,USER_SEQ,CREATED_BY,CREATED_AT,UPDATED_AT) VALUES(?,?,?,NOW(),NOW())"
+    const res1 =await runQuery(CREATE_EMPLOYEE,[name,empUserSeq,req.userSeq])
+    console.log(res1)
+    // after successfully insertion return apiresponse
+    return res.status(201).json(new ApiResponse(
+        200, {}, "User registered successfully"))
+})
+export const registerUser = asyncHandler(async (req,res)=>{
+    const {name,mobile,roleSeq,userName,email,password,isActive} = req.body
    
     if ([name, mobile, password, userName, email].some(field => !field)) {
         throw new ApiError(400, "All fields are required");
@@ -42,14 +79,14 @@ const registerUser = asyncHandler(async (req,res)=>{
     const hashedPassword = await bcrypt.hash(password,10)
 
     // insert into users table
-    await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:2])
+    await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:2,isActive])
     
     // after successfully insertion return apiresponse
     return res.status(201).json(new ApiResponse(
         200, {}, "User registered successfully"))
 })
 
-const loginUser=asyncHandler(async(req,res,next)=>{
+export const loginUser=asyncHandler(async(req,res,next)=>{
         const {loginParam,password}= req.body;
     
         if(!loginParam || !password){
@@ -101,7 +138,7 @@ const loginUser=asyncHandler(async(req,res,next)=>{
     
 })
 
-const logoutUser = asyncHandler(async(req,res,next)=>{
+export const logoutUser = asyncHandler(async(req,res,next)=>{
     const userSeq = req.userSeq;
 //    SELECT_USER_BY_USER_SEQ = "SELECT * FROM USERS WHERE USER_SEQ = ?"
 
@@ -121,13 +158,13 @@ const logoutUser = asyncHandler(async(req,res,next)=>{
 
 })
 
-const currentUserRole = asyncHandler(async(req,res,next)=>{
+export const currentUserRole = asyncHandler(async(req,res,next)=>{
     // GET_CURRENT_USER_ROLE = "SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?"
     const [response] = await runQuery(GET_CURRENT_USER_ROLE,[req.userSeq])
     res.status(200).json(new ApiResponse(200,{roleCode:response.ROLE_CODE},"role code retrieved"))
 })
 
-const getOtp = asyncHandler(async (req,res,next)=>{
+export const getOtp = asyncHandler(async (req,res,next)=>{
     // TODO : after chosing what service to chose
 
 //     const {mobile} = req.body
@@ -153,7 +190,6 @@ const getOtp = asyncHandler(async (req,res,next)=>{
         throw new ApiError(500,"unable to send otp")
 })
 
-const verifyOtp = asyncHandler(async(req,res,next)=>{
+export const verifyOtp = asyncHandler(async(req,res,next)=>{
 
 })
-export {verifyOtp,getOtp,registerUser,loginUser,validateUser,logoutUser,currentUserRole}
