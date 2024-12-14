@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 export default function AddEmployee() {
   const navigate = useNavigate()
   const [formData,setFormData] = useState({userName: "",email: "",mobile: "",name: "",isActive:true})
-  const [loading,error,data,queryFunction,success,message] = useQuery("/api/v1/user/registerEmployee","POST",formData)
+  const [loading,error,data,queryFunction,success,message] = useQuery("/api/v1/employee/registerEmployee","POST",formData)
   console.log(message)
   console.log(success)
   console.log(formData)

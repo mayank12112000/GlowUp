@@ -6,7 +6,6 @@ import { arcjectValidate } from "../middlewares/arcjet.middleware.js";
 const router = Router()
 
 router.route("/register").post(arcjectValidate,registerUser)
-router.route("/registerEmployee").post(verifyJWT,arcjectValidate,registerEmployee)
 router.route("/login").post(loginUser)
 router.route("/validate").get(validateUser)
 router.route("/currentRole").get(verifyJWT,currentUserRole)

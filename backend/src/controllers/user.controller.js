@@ -5,7 +5,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { runQuery } from "../utils/runQuery.js";
 import jwt from "jsonwebtoken"
 import bcrypt from "bcrypt"
-import twilio from "twilio"
 
 export const validateUser=asyncHandler(async(req,res,next)=>{
     const token= req.headers.authorization.replace("Bearer ","")
