@@ -7,12 +7,28 @@
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 .team__list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap; /* Prevent wrapping to new lines */
+  justify-content: flex-start; /* Align items to the start */
   gap: 1rem;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 1rem; /* Add some padding */
+  max-width: 100%; /* Constrain the width to the container */
+  margin: 0 auto; /* Center the container */
+}
+
+.team__list::-webkit-scrollbar {
+  height: 8px; /* Scrollbar height */
+}
+
+.team__list::-webkit-scrollbar-thumb {
+  background-color: #948e86; /* Scrollbar thumb color */
+  border-radius: 4px;
+}
+
+.team__list::-webkit-scrollbar-thumb:hover {
+  background-color: #b1b1b1;
 }
 .team-member {
   display: flex;

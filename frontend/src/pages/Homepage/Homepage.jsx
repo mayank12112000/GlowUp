@@ -8,7 +8,6 @@ import Team from './Team.jsx';
 import BookingCard from './BookingCard.jsx';
 import About from './About.jsx';
 export default function Homepage() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <div>
         <Hero/>
