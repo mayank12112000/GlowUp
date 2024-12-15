@@ -55,7 +55,7 @@
 .team-member__name {
   font-size: 1rem;
   margin: 0.5rem 0 0.2rem;
-  color: #333;
+  /* color: #333; */
 }
 
 .team-member__role {

@@ -19,7 +19,6 @@ export const arcjectValidate = asyncHandler(async (req,_,next) => {
   });
   
   let message = "";
-  // also reveal the validation to a spammer
   if (decision.reason.emailTypes.includes("DISPOSABLE")) {
     message = "We do not allow disposable email addresses.";
   } else if (decision.reason.emailTypes.includes("FREE")) {
@@ -34,8 +33,6 @@ export const arcjectValidate = asyncHandler(async (req,_,next) => {
   }
   
   if (decision.isDenied()) {
-    // res.writeHead(403, { "Content-Type": "application/json" });
-    // res.end(JSON.stringify({ error: "Forbidden" }));
     throw new ApiError(403,message)
   } 
   next()
