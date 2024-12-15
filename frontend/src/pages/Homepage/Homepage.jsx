@@ -6,6 +6,7 @@ import Team from './Team.jsx';
 import BookingCard from './BookingCard.jsx';
 import About from './About.jsx';
 import SmallBookingCard from './SmallBookingCard.jsx';
+import AdditionalInfo from './AdditionalInfo.jsx';
 export default function Homepage() {
   return (
     <div>
@@ -15,6 +16,7 @@ export default function Homepage() {
         <Services/>
         <Team/>
         <About/>
+        <AdditionalInfo/>
           </div>
           <div className="col-md-5">
             <BookingCard/>

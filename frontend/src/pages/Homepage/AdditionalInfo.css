@@ -1,0 +1,52 @@
+/* Container Styling */
+.additional-info {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  /* Section Titles */
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* Opening Times List */
+  .opening-times {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .opening-times li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+  }
+  
+  .day {
+    color: green;
+  }
+  
+  .time {
+    font-weight: normal;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  /* Additional Information List */
+  .additional-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .additional-info-list li {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    font-weight: normal;
+  }
+  
