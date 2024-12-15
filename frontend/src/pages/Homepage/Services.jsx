@@ -32,7 +32,7 @@ console.log(service)
       </div>:<Alert/>}
 
       <div className="tab-content mx-2 row d-flex flex-column">
-        <div className="row mb-4 col-sm-6 p-0">
+        <div className="row mb-4  p-0">
           {!sLoading && service?.length===0 && <p>no service available</p>}
         {sLoading ? <Skeleton number={2} className="mt-3 p-3 homepage-service-block"/> : service && service?.map((service) => (
           <div className="mt-3 p-3 homepage-service-block d-flex align-items-center justify-content-between" key={service.service_seq}>
