@@ -20,7 +20,7 @@ const BookingCard = () => {
 
       {/* CTA Button */}
       <Button  extraClass="justify-content-center" text="Book Now"/>
-
+<hr />
       {/* Open Status and Address */}
       <div className="info">
         <div className="openStatus">
@@ -34,12 +34,12 @@ const BookingCard = () => {
           </a>
         </div>
       </div>
-
+<hr/>
       {/* Membership Section */}
       <div className="membership">
         <p className="membershipText">
           <strong>Memberships</strong> <br />
-          Buy a bundle of appointments.
+          <span className="text-muted">Buy a bundle of appointments.</span>
         </p>
         <Button text="Buy"/>
       </div>

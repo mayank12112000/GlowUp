@@ -6,6 +6,7 @@ import "./homepage.css"
 import Services from './Services.jsx';
 import Team from './Team.jsx';
 import BookingCard from './BookingCard.jsx';
+import About from './About.jsx';
 export default function Homepage() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
@@ -15,6 +16,7 @@ export default function Homepage() {
           <div className="col-md-7">
         <Services/>
         <Team/>
+        <About/>
           </div>
           <div className="col-md-5">
             <BookingCard/>
