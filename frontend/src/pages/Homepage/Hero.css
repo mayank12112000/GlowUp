@@ -1,0 +1,83 @@
+/* Hero Container */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Hero Banner (Full-Width Image) */
+  .hero-banner {
+    position: relative;
+    width: 100%;
+    height: 60vh; 
+  }
+  
+  .hero-banner__img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover; /* Ensures image scales nicely */
+  }
+  
+  @media (max-width: 768px) {
+    .hero-banner__img {
+      /* height: 40% !important; */
+      height: 10rem !important; 
+  }
+  .hero-banner{
+    height: 50%;
+  }
+}
+  .hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.4); /* Dark semi-transparent overlay */
+    padding: 1rem 2rem;
+    border-radius: 8px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Hero Grid for Images */
+  .hero-grid {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .hero-grid__item {
+    flex: 1 1 calc(33% - 1rem); /* 3 columns with a gap */
+    max-width: 50rem; /* Max size for each image */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-grid__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-grid__item:hover {
+    transform: scale(1.05); /* Image zoom effect */
+  }
+  
