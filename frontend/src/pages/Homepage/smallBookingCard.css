@@ -1,0 +1,28 @@
+.small-booking-card{
+    position: fixed;
+    width: 100vw;
+    bottom: 52px;
+    left: 0;
+}
+.small-booking-card-light{
+    background-color: white;
+}
+.small-booking-card-dark{
+    background-color: black;
+}
+
+@media (max-width: 400px) {
+    .small-booking-card{
+        bottom: 30px;
+    }
+}
+@media (min-width: 769px) {
+    .small-booking-card{
+        bottom: 0px;
+    }
+  }
+@media (min-width: 769px) {
+    .small-booking-card{
+        display: none !important;
+    }
+  }

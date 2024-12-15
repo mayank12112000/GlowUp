@@ -1,12 +1,11 @@
 import React from 'react'
-import { ThemeContext } from '../../context/ThemeProvider';
-import { useContext } from 'react';
 import Hero from "./Hero.jsx"
 import "./homepage.css"
 import Services from './Services.jsx';
 import Team from './Team.jsx';
 import BookingCard from './BookingCard.jsx';
 import About from './About.jsx';
+import SmallBookingCard from './SmallBookingCard.jsx';
 export default function Homepage() {
   return (
     <div>
@@ -19,6 +18,7 @@ export default function Homepage() {
           </div>
           <div className="col-md-5">
             <BookingCard/>
+            <SmallBookingCard/>
           </div>
         </div>
     </div>

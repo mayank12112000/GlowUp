@@ -44,18 +44,14 @@ export const registerEmployee = asyncHandler(async (req,res)=>{
     const hashedPassword = await bcrypt.hash(password,10)
     const role = await runQuery(SELECT_EMP_ROLE_SEQ)
     const {roleSeq} = await role[0]
-    console.log(roleSeq)
     // insert into users table
-    console.log(email,hashedPassword,name,mobile,roleSeq,isActive)
     await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq,isActive])
 
     //export const SELECT_USER_SEQ = "SELECT USER_SEQ FROM USERS WHERE USERNAME= ?"
     const empUser = await runQuery(SELECT_USER_SEQ,[userName])
     const {empUserSeq} = await empUser[0]
-console.log(empUserSeq)
 //export const CREATE_EMPLOYEE = "INSERT INTO EMPLOYEE_MASTER (NAME,USER_SEQ,CREATED_BY,CREATED_AT,UPDATED_AT) VALUES(?,?,?,NOW(),NOW())"
     const res1 =await runQuery(CREATE_EMPLOYEE,[name,empUserSeq,req.userSeq])
-    console.log(res1)
     // after successfully insertion return apiresponse
     return res.status(201).json(new ApiResponse(
         200, {}, "User registered successfully"))
