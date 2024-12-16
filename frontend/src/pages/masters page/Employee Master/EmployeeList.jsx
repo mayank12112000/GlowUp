@@ -9,7 +9,6 @@ import Spinner from "../../../components/Spinner";
 
 export default function EmployeeList() { 
   const [loading, error, employees, runQuery, success, message] = useQuery("/api/v1/employee", "GET", null);
-    console.log(employees)
 
   const token = localStorage.getItem("accessToken");
   const { theme } = useContext(ThemeContext);

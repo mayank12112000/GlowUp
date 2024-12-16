@@ -7,9 +7,7 @@ import Alert from '../../../components/Alert';
 
 export default function ServicesList() {
   // [loading,error,data,queryFunction,success,message] query,method,body
-  const [loading, error, serviceType, runQuery, success, message] =
-    useQuery("/api/v1/services/getService", "GET", null);
-    console.log(serviceType)
+  const [loading, error, serviceType, runQuery, success, message] = useQuery("/api/v1/services/getService", "GET", null);
 
   const token = localStorage.getItem("accessToken");
   const { theme } = useContext(ThemeContext);

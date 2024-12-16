@@ -11,10 +11,7 @@ export default function AddEmployee() {
   const navigate = useNavigate()
   const [formData,setFormData] = useState({userName: "",email: "",mobile: "",name: "",isActive:true})
   const [loading,error,data,queryFunction,success,message] = useQuery("/api/v1/employee/registerEmployee","POST",formData)
-  console.log(message)
-  console.log(success)
-  console.log(formData)
-  console.log(data)
+  
   const handleOnChange=(e)=>{
     const {name,value,type,checked} = e.target
     setFormData(pre=>{

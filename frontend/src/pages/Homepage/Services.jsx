@@ -11,7 +11,6 @@ const Services = () => {
   const [currentServiceTypeSeq,setCurrentServiceTypeSeq] = useState(1)
   const [loading, error, serviceType, runQuery, success, message] = useQuery("/api/v1/serviceType/getServiceType","GET",null);
   const [sLoading, sError, service, sRunQuery, sSuccess, sMessage] = useQuery(`/api/v1/services/getServiceFromType?serviceType=${currentServiceTypeSeq}`,"GET",null);
-console.log(service)
   useEffect(() => {
     runQuery();
   }, []);

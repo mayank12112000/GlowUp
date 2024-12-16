@@ -10,10 +10,8 @@ import useQuery from '../../../utils/useQuery.jsx'
 export default function AddService() {
   const token = localStorage.getItem("accessToken")
   const [formData,setFormData] = useState({serviceName:"",isActive:true,serviceType:"",mrpPrice:0,discount:0,hours:"",minutes:"",seconds:""})
-  console.log(formData)
   const [loading,error,data,runQuery,success,message] = useQuery("/api/v1/services","POST",formData)
   const [stLoading, stError, serviceTypes, stRunQuery, stSuccess, stMessage] =useQuery("/api/v1/serviceType/getServiceType", "GET", null);
-  console.log(serviceTypes)
   const navigate = useNavigate()
   const handleOnChange =(e)=>{
     const {name,value,checked,type} = e.target
