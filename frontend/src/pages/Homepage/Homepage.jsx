@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from "./Hero.jsx"
 import "./homepage.css"
 import Services from './Services.jsx';
@@ -9,6 +9,7 @@ import SmallBookingCard from './SmallBookingCard.jsx';
 import AdditionalInfo from './AdditionalInfo.jsx';
 import Reviews from './Reviews.jsx';
 export default function Homepage() {
+  
   return (
     <div>
         <Hero/>
