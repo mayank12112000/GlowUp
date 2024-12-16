@@ -1,0 +1,118 @@
+/* Reviews Container */
+.reviews-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 1rem;
+  }
+  
+  /* Title */
+  .reviews-title {
+    /* font-size: 2rem; */
+    font-weight: bold;
+  }
+  
+  /* Rating Section */
+  .rating {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0 1.5rem;
+  }
+  
+  .rating .stars {
+    color: #ffc107; /* Yellow color for stars */
+    font-size: 1.2rem;
+  }
+  
+  .rating .score {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .rating a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Review List */
+  .reviews-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  /* Media Query for One Review per Row */
+@media (max-width: 768px) {
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensures one review per row on all screen sizes */
+/* @media (min-width: 769px) {
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+} */
+
+  .review {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1rem;
+  }
+  
+  .avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    /* font-size: 1.2rem; */
+    text-transform: uppercase;
+    color: #666;
+  }
+  
+  .avatar.highlighted {
+    background-color: #ff5722;
+    color: #fff;
+  }
+  
+  .review-content {
+    flex: 1;
+  }
+  
+  .reviewer-name {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .review-date {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .stars {
+    color: #ffc107;
+    /* font-size: 1rem; */
+  }
+  
+  .review-comment {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    font-size: 1rem;
+  }
+  
+  .review-comment a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* See All Button */
+  .see-all-container {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  

@@ -7,6 +7,7 @@ import BookingCard from './BookingCard.jsx';
 import About from './About.jsx';
 import SmallBookingCard from './SmallBookingCard.jsx';
 import AdditionalInfo from './AdditionalInfo.jsx';
+import Reviews from './Reviews.jsx';
 export default function Homepage() {
   return (
     <div>
@@ -15,6 +16,7 @@ export default function Homepage() {
           <div className="col-md-7">
         <Services/>
         <Team/>
+        <Reviews/>
         <About/>
         <AdditionalInfo/>
           </div>
