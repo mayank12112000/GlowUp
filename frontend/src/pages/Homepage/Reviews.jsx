@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Reviews.css"; // Add the CSS file for styling
 import Button from './../../components/Button';
 import useQuery from "../../utils/useQuery";
+import Skeleton from './../../components/Skeleton';
 
 export default function Reviews() {
   const [loading,error,reviews,fetchReviews,success,message] = useQuery("/api/v1/reviews","GET",null)
@@ -77,7 +78,8 @@ export default function Reviews() {
 
       {/* Reviews List */}
       <div className="reviews-list">
-        {reviews && reviews?.map((review) => (
+        {loading && <Skeleton number={2}/>}
+        {!loading && reviews && reviews?.map((review) => (
           <div key={review.review_master_seq} className="review">
             <div className={`avatar highlighted`}>
               {review.name[0]}

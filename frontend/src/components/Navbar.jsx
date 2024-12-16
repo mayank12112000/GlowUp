@@ -4,6 +4,7 @@ import "./navbar.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-toastify';
+import ToggleThemeButton from './ToggleThemeButton';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -32,10 +33,11 @@ export default function Navbar() {
         <div className="options d-flex align-items-center">
         
         <div className="theme-toggle">
-          {theme == "dark" ?
+          {/* {theme == "dark" ?
           <button onClick={toggleTheme} className='btn'><i className="fs-5 text-white fa fa-sun-o" aria-hidden="true"></i></button>:
           <button onClick={toggleTheme} className='btn'><i className="fs-5 text-black fa fa fa-moon-o" aria-hidden="true"></i></button>
-        }
+        } */}
+        <ToggleThemeButton clickFunction={toggleTheme}/>
         </div>
         <div className="dropdown mx-3" data-bs-theme={`${theme==="dark"?"dark":"light"}`}>
             <i className="fa fa-user fs-4" onClick={toggleProfileOptions} aria-hidden="true"></i>

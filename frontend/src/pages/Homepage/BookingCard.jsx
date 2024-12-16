@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 
 const BookingCard = () => {
   return (
-    <div className="card mt-5">
+    <div className="booking-card mt-5 shadow">
       {/* Header Section */}
       <div className="header">
         <h2 className="title">Glow Up</h2>
