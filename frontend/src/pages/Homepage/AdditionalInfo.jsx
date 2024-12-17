@@ -5,7 +5,7 @@ export default function AdditionalInfo() {
   const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   const currentDay = new Date().getDay()
   return (
-    <div className="row additional-info">
+    <div className="row additional-info my-3">
       {/* Opening Times Section */}
       <div className="col-sm-7">
         <h4 className="section-title">Opening times</h4>

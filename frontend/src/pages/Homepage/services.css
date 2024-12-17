@@ -2,6 +2,7 @@
     border-radius: 0.8rem;
     border: 1px gray solid;
     transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .homepage-service-block:hover {

@@ -1,0 +1,81 @@
+/* Calendar Container */
+.calendar-container {
+    margin-top: 20px;
+    /* background-color: #f9f9f9; */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Calendar Header */
+  .calendar-header {
+    /* background-color: #f1f5f9; */
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .day-header {
+    padding: 10px;
+  }
+  
+  /* Time Column */
+  .time-column {
+    /* background-color: #f7fafc; */
+    border-right: 1px solid #ccc;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .time-cell {
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Calendar Body */
+  .calendar-body {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .day-column {
+    border-right: 1px solid #ddd;
+  }
+  
+  .calendar-cell {
+    height: 60px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .calendar-header,
+    .time-column {
+      font-size: 0.8rem;
+    }
+  
+    .time-cell,
+    .calendar-cell {
+      height: 50px;
+      line-height: 50px;
+    }
+  
+    .day-header {
+      padding: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .calendar-header {
+      font-size: 0.7rem;
+    }
+  
+    .time-cell,
+    .calendar-cell {
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+  

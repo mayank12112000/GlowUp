@@ -3,11 +3,12 @@ import "./toggleThemeButton.css"
 export default function ToggleThemeButton({clickFunction}) {
   return (
    /* From Uiverse.io by vikramsinghnegi */ 
-<div class="toggle">
-  <input type="checkbox" onClick={clickFunction} />
-  <label></label>
-</div>
-
-
+/* From Uiverse.io by Galahhad */ 
+<label class="ui-switch">
+  <input type="checkbox" onClick={clickFunction}/>
+  <div class="slider">
+    <div class="circle"></div>
+  </div>
+</label>
   )
 }

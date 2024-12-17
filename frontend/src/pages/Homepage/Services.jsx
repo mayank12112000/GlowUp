@@ -34,7 +34,7 @@ const Services = () => {
         <div className="row mb-4  p-0">
           {!sLoading && service?.length===0 && <p>no service available</p>}
         {sLoading ? <Skeleton number={2} className="mt-3 p-3 homepage-service-block"/> : service && service?.map((service) => (
-          <div className="mt-3 p-3 homepage-service-block d-flex align-items-center justify-content-between" key={service.service_seq}>
+          <div className="mt-3 p-3 homepage-service-block d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#serviceModal" key={service.service_seq}>
             <div className="service-content py-2">
             <p className="name m-0">{service.service_name}</p>
             <p className="price m-0">{`₹ ${Math.ceil(service.price - (service.price * (service.discount_percent/100)))}`}
