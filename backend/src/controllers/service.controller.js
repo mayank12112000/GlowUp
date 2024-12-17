@@ -1,11 +1,18 @@
-import {  ADD_SERVICE, SELECT_SERVICE, SELECT_SERVICE_NAME, SELECT_SERVICES } from "../queries/queries.js";
+import {  ADD_SERVICE, SELECT_SERVICE, SELECT_SERVICE_FROM_SERVICESEQ, SELECT_SERVICE_NAME, SELECT_SERVICES } from "../queries/queries.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { runQuery } from "../utils/runQuery.js";
 
 export const getAllService= asyncHandler(async(req,res,next)=>{
-    const services = await runQuery(SELECT_SERVICES,["%%"])
+    const {serviceSeq} = req.query
+    console.log(serviceSeq)
+    let services;
+    if(!serviceSeq){
+        services = await runQuery(SELECT_SERVICES,["%%"])    
+    }else{
+        services = await runQuery(SELECT_SERVICE_FROM_SERVICESEQ,[serviceSeq])
+    }
     res
     .status(200)
     .json(

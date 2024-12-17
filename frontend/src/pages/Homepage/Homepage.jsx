@@ -8,7 +8,6 @@ import About from './About.jsx';
 import SmallBookingCard from './SmallBookingCard.jsx';
 import AdditionalInfo from './AdditionalInfo.jsx';
 import Reviews from './Reviews.jsx';
-import ServiceModal from '../../components/Modal/ServiceModal.jsx';
 export default function Homepage() {
   
   return (
@@ -21,7 +20,6 @@ export default function Homepage() {
         <Reviews/>
         <About/>
         <AdditionalInfo/>
-        <ServiceModal/>
           </div>
           <div className="col-md-5">
             <BookingCard/>
