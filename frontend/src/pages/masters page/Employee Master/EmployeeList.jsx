@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { apiRequest } from "../../../utils/apiRequest";
-import { ThemeContext } from './../../../context/ThemeProvider';
-import Alert from "../../../components/Alert";
-import useQuery from "../../../utils/useQuery";
-import Spinner from "../../../components/Spinner";
+import { ThemeContext } from './../../../context/ThemeProvider.jsx';
+import Alert from "../../../components/Alert.jsx";
+import useQuery from "../../../utils/useQuery.jsx";
+import Spinner from "../../../components/Spinner.jsx";
 
 
 export default function EmployeeList() { 

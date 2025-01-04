@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../../../components/Input";
-import Button from "../../../components/Button";
-import Spinner from "../../../components/Spinner";
-import useQuery from './../../../utils/useQuery';
-import Alert from "../../../components/Alert";
-import Radio from './../../../components/Radio';
+import Input from "../../../components/Input.jsx";
+import Button from "../../../components/Button.jsx";
+import Spinner from "../../../components/Spinner.jsx";
+import useQuery from './../../../utils/useQuery.jsx';
+import Alert from "../../../components/Alert.jsx";
+import Radio from './../../../components/Radio.jsx';
 import { toast } from "react-toastify";
 export default function AddEmployee() {
   const navigate = useNavigate()
