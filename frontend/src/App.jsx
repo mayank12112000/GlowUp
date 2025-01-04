@@ -13,7 +13,6 @@ import NotFound from './pages/NotFound';
 import Homepage from './pages/Homepage/Homepage.jsx';
 import { ThemeContext } from './context/ThemeProvider';
 import { useContext } from 'react';
-import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import { Bounce, ToastContainer } from 'react-toastify';
@@ -35,6 +34,7 @@ import NotificationMaster from './pages/masters page/Notification Master/Notific
 import EmployeeMaster from './pages/masters page/Employee Master/EmployeeMaster.jsx';
 import SubRoleMaster from './pages/masters page/Sub Role Master/SubRoleMaster.jsx';
 import AppointmentBooking from './pages/Bookings page/AppointmentBooking.jsx';
+import Navbar from './components/Navbar.jsx';
 
 function App() {
   const { theme } = useContext(ThemeContext);
