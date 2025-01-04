@@ -15,6 +15,7 @@ export default function AuthProvider({children}) {
         const token = localStorage.getItem("accessToken")
         if(token){
             const decoded = jwtDecode(token)
+            console.log(decoded)
             if(decoded.exp * 1000 > Date.now()){
                 setUserSeq(decoded.userSeq)
                 setName(decoded.name)
@@ -28,7 +29,7 @@ export default function AuthProvider({children}) {
                 setRoleCode(null)
             }
         }
-    },[])
+    },[token])
     const logout= async()=>{
       const response = await apiRequest("/api/v1/user/logout","POST",null,token)
       if(response.success){

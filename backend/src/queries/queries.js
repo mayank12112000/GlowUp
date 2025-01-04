@@ -1,45 +1,47 @@
 // role master
-export const SELECT_ROLES = "SELECT a.role_seq,a.role_name,a.role_code,b.username as created_by FROM ROLE_MASTER a left join users b on a.created_by = b.user_seq"
-export const ADD_ROLE = 'INSERT INTO ROLE_MASTER (IS_ADMIN,IS_EMPLOYEE,ROLE_CODE,ROLE_NAME,CREATED_BY,CREATED_ON,UPDATED_ON) VALUES(?,?,?,?,?,NOW(),NOW())'
-export const SELECT_ROLE = "SELECT * FROM ROLE_MASTER WHERE ROLE_CODE = LOWER(?) OR ROLE_NAME=LOWER(?)"
-export const SELECT_UNIQUE_ROLE = "SELECT role_seq,role_code,role_name,is_employee,is_admin FROM ROLE_MASTER WHERE ROLE_SEQ = ?"
-export const UPDATE_ROLE = "UPDATE ROLE_MASTER SET ROLE_CODE = ?, ROLE_NAME=?,IS_ADMIN = ?, IS_EMPLOYEE = ?, UPDATED_ON = NOW(), UPDATED_BY = ? WHERE ROLE_SEQ = ?"
+export const SELECT_ROLES = "select a.role_seq,a.role_name,a.role_code,b.username as created_by from role_master a left join users b on a.created_by = b.user_seq"
+export const ADD_ROLE = 'insert into role_master (is_admin,is_employee,role_code,role_name,created_by,created_on,updated_on) values(?,?,?,?,?,now(),now())'
+export const SELECT_ROLE = "select * from role_master where role_code = lower(?) or role_name=lower(?)"
+export const SELECT_UNIQUE_ROLE = "select role_seq,role_code,role_name,is_employee,is_admin from role_master where role_seq = ?"
+export const UPDATE_ROLE = "update role_master set role_code = ?, role_name=?,is_admin = ?, is_employee = ?, updated_on = now(), updated_by = ? where role_seq = ?"
 // register user
-export const SELECT_SINGLE_USER = 'SELECT B.ROLE_CODE,A.USER_SEQ FROM USERS A LEFT JOIN ROLE_MASTER B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
-export const SELECT_USER = "SELECT * FROM USERS WHERE USERNAME = LOWER(?) OR EMAIL = LOWER(?) OR MOBILE = ? AND ISACTIVE = TRUE"
-export const CREATE_USER = "INSERT INTO USERS (USERNAME,EMAIL,PASSWORD,NAME,MOBILE,ROLE_SEQ,ISACTIVE,CREATED_AT,UPDATED_AT) VALUES (?,?,?,?,?,?,?,NOW(),NOW())"
-export const SELECT_USER_ROLE = 'SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE_MASTER B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?'
-export const SELECT_EMP_ROLE_SEQ = "SELECT role_seq as roleSeq FROM ROLE_MASTER WHERE ROLE_CODE = 'EMP'"
-export const CREATE_EMPLOYEE = "INSERT INTO EMPLOYEE_MASTER (NAME,USER_SEQ,CREATED_BY,CREATED_AT,UPDATED_AT) VALUES(?,?,?,NOW(),NOW())"
+export const SELECT_SINGLE_USER = 'select b.role_code,a.user_seq from users a left join role_master b on a.role_seq = b.role_seq where user_seq = ?'
+export const SELECT_USER = "select * from users where username = lower(?) or email = lower(?) or mobile = ? and isactive = true"
+export const CREATE_USER = "insert into users (username,email,password,name,mobile,role_seq,isactive,created_at,updated_at) values (?,?,?,?,?,?,?,now(),now())"
+export const SELECT_USER_ROLE = 'select b.role_code from users a left join role_master b on a.role_seq = b.role_seq where user_seq = ?'
+export const SELECT_EMP_ROLE_SEQ = "select role_seq as roleSeq from role_master where role_code = 'emp'"
+export const CREATE_EMPLOYEE = "insert into employee_master (name,user_seq,created_by,created_at,updated_at) values(?,?,?,now(),now())"
 // register employee
-export const SELECT_USER_SEQ = "SELECT USER_SEQ as empUserSeq FROM USERS WHERE USERNAME= ?"
-export const SELECT_EMPLOYEE = "SELECT DATE(A.CREATED_AT) AS createdAt,A.EMPLOYEE_SEQ as employeeSeq,B.EMAIL as email,B.MOBILE  as mobile,B.USERNAME as username,B.NAME as name,B.ISACTIVE as isActive FROM EMPLOYEE_MASTER A LEFT JOIN USERS B ON A.USER_SEQ = B.USER_SEQ"
-// LOGOUT USER
-export const SELECT_USER_BY_USER_SEQ = "SELECT * FROM USERS WHERE USER_SEQ = ?"
-export const REMOVE_TOKENS = "UPDATE user_tokens SET access_token = null,refresh_token=null WHERE user_seq = ?"
+export const SELECT_USER_SEQ = "select user_seq as empUserSeq from users where username= ?"
+export const SELECT_EMPLOYEE = "select date(e.created_at) as createdAt,e.employee_seq as employeeSeq,u.email as email,u.mobile  as mobile,u.username as username,u.name as name,u.isactive as isActive , srm.sub_role_name from employee_master e left join users u on e.user_seq = u.user_seq left join sub_role_master srm on srm.sub_role_master_seq = e.sub_role_master_seq"
+// product master
+export const SELECT_PRODUCT = "select * from product_master"
+export const ADD_PRODUCT = "insert into product_master (product_name,is_active,price,discount_percent,product_type_seq,hours,minutes,created_by,updated_by,created_on,updated_on) values(?,?,?,?,?,?,?,?,?,now(),now())"
+// logout user
+export const SELECT_USER_BY_USER_SEQ = "select * from users where user_seq = ?"
+export const REMOVE_TOKENS = "update user_tokens set access_token = null,refresh_token=null where user_seq = ?"
 // get current role
-export const GET_CURRENT_USER_ROLE = "SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE_MASTER B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?"
+export const GET_CURRENT_USER_ROLE = "select b.role_code from users a left join role_master b on a.role_seq = b.role_seq where user_seq = ?"
 
 // branch master
-export const SELECT_BRANCHES = "SELECT * FROM BRANCH_MASTER"
-export const SELECT_BRANCH = "SELECT * FROM BRANCH_MASTER WHERE BRANCH_NAME = ?"
-export const ADD_BRANCH = "INSERT INTO BRANCH_MASTER (BRANCH_NAME,BRANCH_ADDRESS) VALUES(?,?)"
+export const SELECT_BRANCHES = "select * from branch_master"
+export const SELECT_BRANCH = "select * from branch_master where branch_name = ?"
+export const ADD_BRANCH = "insert into branch_master (branch_name,branch_address) values(?,?)"
 // service type master
-export const SELECT_SERVICE_TYPE = "SELECT a.service_type_seq, a.service_type_name,b.username as created_by FROM SERVICE_TYPE_MASTER a left join users b on a.created_by = b.user_seq WHERE SERVICE_TYPE_NAME LIKE ?"
-export const ADD_SERVICE_TYPE = "INSERT INTO SERVICE_TYPE_MASTER (SERVICE_TYPE_NAME,IS_ACTIVE,CREATED_BY,CREATED_ON,UPDATED_ON) VALUES(?,?,?,NOW(),NOW())"
+export const SELECT_SERVICE_TYPE = "select a.service_type_seq, a.service_type_name,b.username as created_by from service_type_master a left join users b on a.created_by = b.user_seq where service_type_name like ?"
+export const ADD_SERVICE_TYPE = "insert into service_type_master (service_type_name,is_active,created_by,created_on,updated_on) values(?,?,?,now(),now())"
 
 // service master
-export const SELECT_SERVICE_NAME = "SELECT SERVICE_NAME FROM SERVICE_MASTER WHERE SERVICE_NAME = ?"
-export const SELECT_SERVICES = "SELECT A.service_seq,a.hours,a.minutes, A.service_name,B.username AS created_by,a.price,a.discount_percent, C.service_type_name FROM SERVICE_MASTER A LEFT JOIN USERS B ON A.CREATED_BY = B.USER_SEQ LEFT JOIN SERVICE_TYPE_MASTER C ON A.SERVICE_TYPE_SEQ = C.SERVICE_TYPE_SEQ WHERE SERVICE_NAME LIKE ?"
-export const SELECT_SERVICE_FROM_SERVICESEQ = "SELECT A.service_seq,a.hours,a.minutes, A.service_name,B.username AS created_by,a.price,a.discount_percent, C.service_type_name FROM SERVICE_MASTER A LEFT JOIN USERS B ON A.CREATED_BY = B.USER_SEQ LEFT JOIN SERVICE_TYPE_MASTER C ON A.SERVICE_TYPE_SEQ = C.SERVICE_TYPE_SEQ WHERE SERVICE_SEQ = ?"
+export const SELECT_SERVICE_NAME = "select service_name from service_master where service_name = ?"
+export const SELECT_SERVICES = "select a.service_seq,a.hours,a.minutes, a.service_name,b.username as created_by,a.price,a.discount_percent, c.service_type_name from service_master a left join users b on a.created_by = b.user_seq left join service_type_master c on a.service_type_seq = c.service_type_seq where service_name like ?"
+export const SELECT_SERVICE_FROM_SERVICESEQ = "select a.service_seq,a.hours,a.minutes, a.service_name,b.username as created_by,a.price,a.discount_percent, c.service_type_name from service_master a left join users b on a.created_by = b.user_seq left join service_type_master c on a.service_type_seq = c.service_type_seq where service_seq = ?"
 
-export const SELECT_SERVICE = "SELECT A.service_seq,a.hours,a.minutes, A.service_name,a.price,a.discount_percent FROM SERVICE_MASTER A WHERE SERVICE_TYPE_SEQ = ? and is_Active = true"
-export const ADD_SERVICE = "INSERT INTO SERVICE_MASTER (SERVICE_NAME,IS_ACTIVE,PRICE,DISCOUNT_PERCENT,SERVICE_TYPE_SEQ,HOURS,MINUTES,CREATED_BY,UPDATED_BY,CREATED_ON,UPDATED_ON) VALUES(?,?,?,?,?,?,?,?,?,NOW(),NOW())"
+export const SELECT_SERVICE = "select a.service_seq,a.hours,a.minutes, a.service_name,a.price,a.discount_percent from service_master a where service_type_seq = ? and is_active = true"
+export const ADD_SERVICE = "insert into service_master (service_name,is_active,price,discount_percent,service_type_seq,hours,minutes,created_by,updated_by,created_on,updated_on) values(?,?,?,?,?,?,?,?,?,now(),now())"
 
 // reviews
-export const SELECT_REVIEWS = 'SELECT R.review_master_seq,R.review,U.name,R.rating,date(R.created_at) as date FROM REVIEW_MASTER R LEFT JOIN USERS U ON R.USER_SEQ = U.USER_SEQ ORDER BY RATING DESC'
+export const SELECT_REVIEWS = 'select r.review_master_seq,r.review,u.name,r.rating,date(r.created_at) as date from review_master r left join users u on r.user_seq = u.user_seq order by rating desc'
 // tokens
-export const INSERT_TOKENS = "INSERT INTO USER_TOKENS(USER_SEQ,ACCESS_TOKEN,REFRESH_TOKEN,CREATED_AT,UPDATED_AT) VALUES(?,?,?,NOW(),NOW())"
-export const UDPATE_TOKENS = "UPDATE  USER_TOKENS SET ACCESS_TOKEN=?,REFRESH_TOKEN=?,CREATED_AT=NOW(),UPDATED_AT=NOW() WHERE USER_SEQ = ?"
-export const SELECT_TOKEN = "SELECT * FROM USER_TOKENS WHERE USER_SEQ = ?"
-
+export const INSERT_TOKENS = "insert into user_tokens(user_seq,access_token,refresh_token,created_at,updated_at) values(?,?,?,now(),now())"
+export const UDPATE_TOKENS = "update  user_tokens set access_token=?,refresh_token=?,created_at=now(),updated_at=now() where user_seq = ?"
+export const SELECT_TOKEN = "select * from user_tokens where user_seq = ?"

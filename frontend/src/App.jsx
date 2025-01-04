@@ -34,6 +34,7 @@ import ServicesTypeMaster from './pages/masters page/Service Type Master/Service
 import NotificationMaster from './pages/masters page/Notification Master/NotificationMaster.jsx';
 import EmployeeMaster from './pages/masters page/Employee Master/EmployeeMaster.jsx';
 import SubRoleMaster from './pages/masters page/Sub Role Master/SubRoleMaster.jsx';
+import AppointmentBooking from './pages/Bookings page/AppointmentBooking.jsx';
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -71,6 +72,7 @@ function App() {
           <Route path='/masters/product-type-master/*' element={<ProtectedAdminRoute><ProductTypeMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/discount-promo-master/*' element={<ProtectedAdminRoute><DiscountPromoMaster/></ProtectedAdminRoute>}/>
           <Route path='/masters/:type' element={<ProtectedAdminRoute><MastersPage/></ProtectedAdminRoute>}/>
+          <Route path='/appointment-booking' element={<ProtectedRoute><AppointmentBooking/></ProtectedRoute>}/>
 
           <Route path='*' element={<NotFound/>}/>  
         </Routes> 

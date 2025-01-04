@@ -6,7 +6,6 @@ import { runQuery } from "../utils/runQuery.js";
 
 export const getAllService= asyncHandler(async(req,res,next)=>{
     const {serviceSeq} = req.query
-    console.log(serviceSeq)
     let services;
     if(!serviceSeq){
         services = await runQuery(SELECT_SERVICES,["%%"])    

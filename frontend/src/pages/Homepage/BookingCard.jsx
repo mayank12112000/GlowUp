@@ -1,6 +1,7 @@
 import React from "react";
 import "./BookingCard.css";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const BookingCard = () => {
   return (
@@ -19,7 +20,9 @@ const BookingCard = () => {
       </div>
 
       {/* CTA Button */}
+      <Link to={"/appointment-booking"}>
       <Button  extraClass="justify-content-center" text="Book Now"/>
+      </Link>
 <hr />
       {/* Open Status and Address */}
       <div className="info">

@@ -107,7 +107,7 @@ export const loginUser=asyncHandler(async(req,res,next)=>{
 
         const role_code = await runQuery(SELECT_USER_ROLE,[user.user_seq])
         const accessToken = jwt.sign(
-            {name:user.name,userSeq:user.user_seq, roleCode:role_code[0]?.ROLE_CODE,email:user.email,mobile:user.mobile,isMobileVerified:user.is_mobile_verified},
+            {name:user.name,userSeq:user.user_seq, roleCode:role_code[0]?.role_code,email:user.email,mobile:user.mobile,isMobileVerified:user.is_mobile_verified},
             process.env.ACCESS_TOKEN_SECRET,
             {expiresIn:process.env.ACCESS_TOKEN_EXPIRY}
         )
@@ -160,7 +160,7 @@ export const logoutUser = asyncHandler(async(req,res,next)=>{
 export const currentUserRole = asyncHandler(async(req,res,next)=>{
     // GET_CURRENT_USER_ROLE = "SELECT B.ROLE_CODE FROM USERS A LEFT JOIN ROLE B ON A.ROLE_SEQ = B.ROLE_SEQ WHERE USER_SEQ = ?"
     const [response] = await runQuery(GET_CURRENT_USER_ROLE,[req.userSeq])
-    res.status(200).json(new ApiResponse(200,{roleCode:response.ROLE_CODE},"role code retrieved"))
+    res.status(200).json(new ApiResponse(200,{roleCode:response.role_code},"role code retrieved"))
 })
 
 export const getOtp = asyncHandler(async (req,res,next)=>{

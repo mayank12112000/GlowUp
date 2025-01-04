@@ -24,6 +24,7 @@ import serviceTypeRouter from './routes/serviceType.router.js';
 import serviceRouter from './routes/service.router.js';
 import employeeRouter from "./routes/employee.router.js"
 import reviewsRouter from "./routes/reviews.router.js"
+import productRouter from "./routes/product.router.js"
 import { ApiError } from './utils/ApiError.js';
 
 // routes declaration
@@ -34,6 +35,7 @@ app.use("/api/v1/branch",branchRouter)
 app.use("/api/v1/serviceType",serviceTypeRouter)
 app.use("/api/v1/services",serviceRouter)
 app.use("/api/v1/reviews",reviewsRouter)
+app.use("/api/v1/product",productRouter)
 
 
 app.use(cookieParser())

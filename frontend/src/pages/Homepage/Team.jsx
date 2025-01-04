@@ -8,14 +8,13 @@ export default function Team() {
   useEffect(()=>{
     runQuery()
   },[])
-
   return (
     <div className="tabs-container">
       <h1>Team</h1>
       <div className="team__list">
         {loading && <Spinner/>}
         {!loading && !error && team?.map((member, index) => (
-          <TeamMember initials={member.name[0]} key={index} {...member} />
+          <TeamMember role={member.sub_role_name} initials={member.name[0]} key={index} {...member} />
         ))}
       </div>
     </div>
