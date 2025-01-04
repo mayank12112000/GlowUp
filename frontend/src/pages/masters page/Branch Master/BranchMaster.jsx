@@ -1,12 +1,12 @@
 import React from 'react';
 import './BranchMaster.css'; // Import CSS for styling
 import { Routes,Route, useParams } from 'react-router-dom';
-import BranchList from './BranchList';
-import BranchDetails from './BranchDetails';
-import AddBranch from './AddBranch';
-import BranchEdit from './BranchEdit';
+import BranchList from './BranchList.jsx';
+import BranchDetails from './BranchDetails.jsx';
+import AddBranch from './AddBranch.jsx';
+import BranchEdit from './BranchEdit.jsx';
 import { Link } from 'react-router-dom';
-import Button from '../../../components/Button';
+import Button from '../../../components/Button.jsx';
 
 export default function BranchMaster() {
   const param = useParams()

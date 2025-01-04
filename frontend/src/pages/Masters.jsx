@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MasterCard from '../components/masterCard';
+import MasterCard from '../components/masterCard.jsx';
 export default function Masters() {
     
   return (

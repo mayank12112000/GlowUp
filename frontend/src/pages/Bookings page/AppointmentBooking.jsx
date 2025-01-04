@@ -1,7 +1,7 @@
 import React from 'react'
-import Services from '../Homepage/Services'
+import Services from '../Homepage/Services.jsx'
 import CartCard from './CartCard.jsx'
-import SmallBookingCard from '../Homepage/SmallBookingCard'
+import SmallBookingCard from '../Homepage/SmallBookingCard.jsx'
 
 export default function AppointmentBooking() {
   return (

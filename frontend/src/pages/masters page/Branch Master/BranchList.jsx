@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import useQuery from '../../../utils/useQuery';
-import Spinner from '../../../components/Spinner';
-import Alert from '../../../components/Alert';
-import { ThemeContext } from '../../../context/ThemeProvider';
+import useQuery from '../../../utils/useQuery.jsx';
+import Spinner from '../../../components/Spinner.jsx';
+import { ThemeContext } from '../../../context/ThemeProvider.jsx';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function BranchList() {

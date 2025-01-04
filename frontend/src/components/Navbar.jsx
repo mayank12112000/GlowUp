@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { ThemeContext } from '../context/ThemeProvider';
+import { ThemeContext } from '../context/ThemeProvider.jsx';
 import "./navbar.css"
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthProvider';
+import { AuthContext } from '../context/AuthProvider.jsx';
 import { toast } from 'react-toastify';
-import ToggleThemeButton from './ToggleThemeButton';
+import ToggleThemeButton from './ToggleThemeButton.jsx';
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const [showProfileOptions, setShowProfileOptions] = useState(false);

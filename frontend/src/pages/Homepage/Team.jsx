@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import TeamMember from '../../components/TeamMember';
-import useQuery from '../../utils/useQuery';
-import Spinner from '../../components/Spinner';
+import TeamMember from '../../components/TeamMember.jsx';
+import useQuery from '../../utils/useQuery.jsx';
+import Spinner from '../../components/Spinner.jsx';
 
 export default function Team() {
   const  [loading,error,team,runQuery,success,message] = useQuery("/api/v1/employee?active=true","GET",null)

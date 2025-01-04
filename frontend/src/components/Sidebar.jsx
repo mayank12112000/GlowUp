@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./sidebar.css"
-import { ThemeContext } from '../context/ThemeProvider';
-import { AuthContext } from './../context/AuthProvider';
+import { ThemeContext } from '../context/ThemeProvider.jsx';
+import { AuthContext } from './../context/AuthProvider.jsx';
 export default function Sidebar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const {userSeq,roleCode} = useContext(AuthContext)

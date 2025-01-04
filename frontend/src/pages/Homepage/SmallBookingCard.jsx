@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import Button from '../../components/Button'
+import Button from '../../components/Button.jsx'
 import "./smallBookingCard.css"
-import { ThemeContext } from '../../context/ThemeProvider'
+import { ThemeContext } from '../../context/ThemeProvider.jsx'
 export default function SmallBookingCard() {
     const {theme} = useContext(ThemeContext)
   return (

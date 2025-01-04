@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import Input from '../components/Input';
-import Button from '../components/Button';
-import Spinner from '../components/Spinner';
+import Input from '../components/Input.jsx';
+import Button from '../components/Button.jsx';
+import Spinner from '../components/Spinner.jsx';
 import { apiRequest } from '../utils/apiRequest';
-import Alert from '../components/Alert';
+import Alert from '../components/Alert.jsx';
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthContext } from '../context/AuthProvider';
+import { AuthContext } from '../context/AuthProvider.jsx';
 
 export default function Login() {
   const {setRoleCode,setUserSeq} = useContext(AuthContext)

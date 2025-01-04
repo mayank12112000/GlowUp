@@ -1,6 +1,6 @@
 import React from "react";
 import "./BookingCard.css";
-import Button from "../../components/Button";
+import Button from "../../components/Button.jsx";
 import { Link } from "react-router-dom";
 
 const BookingCard = () => {

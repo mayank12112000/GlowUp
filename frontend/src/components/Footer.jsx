@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import "./footer.css"
 import { Link } from 'react-router-dom'
-import { ThemeContext } from '../context/ThemeProvider'
+import { ThemeContext } from '../context/ThemeProvider.jsx'
 export default function Footer() {
     const {theme} = useContext(ThemeContext)
   return (

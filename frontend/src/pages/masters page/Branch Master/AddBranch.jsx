@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Input from '../../../components/Input'
-import Button from '../../../components/Button'
+import Input from '../../../components/Input.jsx'
+import Button from '../../../components/Button.jsx'
 import {  useNavigate } from 'react-router-dom'
-import Spinner from '../../../components/Spinner'
-import Radio from '../../../components/Radio'
-import {apiRequest} from "../../../utils/apiRequest.js"
-import { toast } from 'react-toastify';
+import Spinner from '../../../components/Spinner.jsx'
 import useQuery from '../../../utils/useQuery.jsx'
+import { toast } from 'react-toastify'
 
 export default function AddBranch() {
   const [formData,setFormData] = useState({branchName:"",branchAddress:""})

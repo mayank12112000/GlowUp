@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import useQuery from "../../utils/useQuery";
-import Spinner from "../../components/Spinner";
-import Alert from "../../components/Alert";
+import useQuery from "../../utils/useQuery.jsx";
+import Spinner from "../../components/Spinner.jsx";
+import Alert from "../../components/Alert.jsx";
 import "./services.css"
-import Button from './../../components/Button';
-import { ThemeContext } from "../../context/ThemeProvider";
-import Skeleton from "../../components/Skeleton";
+import Button from './../../components/Button.jsx';
+import { ThemeContext } from "../../context/ThemeProvider.jsx";
+import Skeleton from "../../components/Skeleton.jsx";
 const Services = () => {
   const { theme } = useContext(ThemeContext);
   const [currentServiceTypeSeq,setCurrentServiceTypeSeq] = useState(1)

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./Reviews.css"; // Add the CSS file for styling
-import Button from './../../components/Button';
-import useQuery from "../../utils/useQuery";
-import Skeleton from './../../components/Skeleton';
+import Button from './../../components/Button.jsx';
+import useQuery from "../../utils/useQuery.jsx";
+import Skeleton from './../../components/Skeleton.jsx';
 
 export default function Reviews() {
   const [loading,error,reviews,fetchReviews,success,message] = useQuery("/api/v1/reviews","GET",null)
