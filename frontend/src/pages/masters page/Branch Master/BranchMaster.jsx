@@ -1,5 +1,4 @@
 import React from 'react';
-import './BranchMaster.css'; // Import CSS for styling
 import { Routes,Route, useParams } from 'react-router-dom';
 import BranchList from './BranchList.jsx';
 import BranchDetails from './BranchDetails.jsx';
