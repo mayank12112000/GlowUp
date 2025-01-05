@@ -1,0 +1,69 @@
+/* From Uiverse.io by vinodjangid07 */ 
+.chat-container-block {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 25rem;
+    height: 30rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 50000;
+    display: block;
+}
+.chat-container-none{
+    display: none;
+}
+
+.chat-container.open {
+    display: flex;
+}
+.chatBtn {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #6A11CB, #2575FC, #6A11CB);
+    cursor: pointer;
+    padding-top: 3px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.164);
+    position: relative;
+    background-size: 300%;
+    background-position: left;
+    transition-duration: 1s;
+  }
+  
+  .tooltip {
+    position: absolute;
+    width: 7rem;
+    bottom: -40px;
+    opacity: 0;
+    background-color: #FF5733 !important;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .5s;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+  }
+  
+  .chatBtn:hover .tooltip {
+    opacity: 1;
+    transition-duration: .5s;
+  }
+  
+  .chatBtn:hover {
+    background-position: right;
+    transition-duration: 1s;
+  }

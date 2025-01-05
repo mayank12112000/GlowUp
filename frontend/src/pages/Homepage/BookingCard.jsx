@@ -21,7 +21,7 @@ const BookingCard = () => {
 
       {/* CTA Button */}
       <Link to={"/appointment-booking"}>
-      <Button  extraClass="justify-content-center" text="Book Now"/>
+      <Button  extraclass="justify-content-center" text="Book Now"/>
       </Link>
 <hr />
       {/* Open Status and Address */}

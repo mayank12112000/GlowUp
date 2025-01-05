@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider.jsx';
 import { toast } from 'react-toastify';
 import ToggleThemeButton from './ToggleThemeButton.jsx';
+import ChatButton from './chatButton';
 
 export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
@@ -33,6 +34,7 @@ export default function Navbar() {
         </div>
         <div className="options d-flex align-items-center">
         
+          <ChatButton className="mx-3"/>
         <div className="theme-toggle">
           {/* {theme == "dark" ?
           <button onClick={toggleTheme} className='btn'><i className="fs-5 text-white fa fa-sun-o" aria-hidden="true"></i></button>:

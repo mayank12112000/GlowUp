@@ -30,7 +30,19 @@
     height: 50%;
   }
 }
+  @keyframes hero-overlay-animation {
+    0% {
+      opacity: 0;
+      scale: 5;
+      transform: translate(-25%, 100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
   .hero-overlay {
+    animation: hero-overlay-animation 0.8s ease-out forwards;
     position: absolute;
     top: 50%;
     left: 50%;

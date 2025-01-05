@@ -74,6 +74,7 @@ export const registerUser = asyncHandler(async (req,res)=>{
     const hashedPassword = await bcrypt.hash(password,10)
 
     // insert into users table
+    console.log(userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:2,isActive)
     await runQuery(CREATE_USER,[userName.toLowerCase(),email,hashedPassword,name,mobile,roleSeq?roleSeq:2,isActive])
     
     // after successfully insertion return apiresponse

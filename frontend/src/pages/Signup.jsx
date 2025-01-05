@@ -18,6 +18,7 @@ export default function Signup() {
     password: "",
     mobile: "",
     name: "",
+    isActive: true,
   })
   const [confirmPassword,setConfirmPassword] = useState("")
   const handleOnChange=(e)=>{
